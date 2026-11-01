@@ -3,50 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Smart Built-environment Intelligence Lab at OO University: human knowledge and AI for smarter, safer built environments.">
-<title>SBI Lab Homepage</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="CMX Lab (Construction Management Transformation) at Honam University: from construction data to knowledge, intelligence, and action.">
+<meta property="og:title" content="CMX Lab · Construction Management Transformation">
+<meta property="og:description" content="From construction data to knowledge, intelligence, and action.">
+<title>CMX Lab</title>
 <style>
-/* Layout: sticky white nav → dark hero drawn as a structural grid (column lines + grid bubbles) → monochrome sections on a 1160px column, green used only for accent and state */
+/* Layout: sticky nav → split hero (type + live point-cloud field) → light sections on a 1160px column; one green, used for structure and state */
+@font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-3Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-4Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-5Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-6SemiBold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-7Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Paperlogy";src:url("fonts/Paperlogy-8ExtraBold.woff2") format("woff2");font-weight:800;font-display:swap}
 :root{
-  --green:#00703E;          /* KU green */
+  --green:#00703E;
   --green-strong:#005A32;
+  --green-deep:#003D22;
   --green-soft:#E8F3ED;
   --ink:#0B0D0C;
   --fg:#111413;
   --fg-2:#4A514D;
   --fg-3:#7C847F;
   --bg:#FFFFFF;
-  --bg-2:#F3F8F5;           /* light green-tinted band */
+  --bg-2:#F3F8F5;
   --bg-3:#E8F3ED;
   --line:#E1E8E4;
   --line-g:#CFE3D7;
   --card:#FFFFFF;
   --hero-line:rgba(0,112,62,.05);
-  --iso-grid:rgba(0,112,62,.13);
-  --iso-slab:rgba(255,255,255,.88);
-  --iso-hl:rgba(0,112,62,.2);
   --shadow:0 1px 2px rgba(0,40,20,.04),0 8px 24px -8px rgba(0,40,20,.10);
-  --f-display:"Inter Tight","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-body:"Inter Tight","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-display:"Paperlogy",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",sans-serif;
+  --f-body:"Paperlogy",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",sans-serif;
+  --f-mono:"Paperlogy",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Segoe UI",sans-serif;
   --w:1160px;
   --r:14px;
+  color-scheme:light;
 }
-/* single light theme by design: white ground in every viewer theme */
-:root{color-scheme:light}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all}
+body{font-variant-numeric:tabular-nums;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.025em}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.02em}
 p{margin:0}
+ul{margin:0;padding:0;list-style:none}
 .wrap{max-width:var(--w);margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
 @media (max-width:520px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
 
@@ -55,22 +57,21 @@ p{margin:0}
 :root:not([data-lang="en"]) .en{display:none!important}
 
 /* NAV */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.03em}
-.brand-mark{width:26px;height:26px;border-radius:7px;background:var(--green);display:grid;place-items:center}
-.brand-mark svg{width:16px;height:16px}
-.brand b{color:var(--green)}
-.menu{display:flex;gap:4px;margin-left:auto}
-.menu a{font-size:14.5px;font-weight:500;color:var(--fg-2);padding:8px 12px;border-radius:8px;transition:color .15s,background .15s}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:#fff;font:700 13px/1 var(--f-mono);letter-spacing:-.04em}
+.brand b{color:var(--green);font-weight:800}
+.menu{display:flex;gap:2px;margin-left:auto}
+.menu a{font-size:15px;font-weight:500;color:var(--fg-2);padding:8px 12px;border-radius:8px;transition:color .15s,background .15s}
 .menu a:hover{color:var(--fg);background:var(--bg-2)}
-.menu a.on{color:var(--green)}
+.menu a.on{color:var(--green);background:var(--green-soft)}
 .tools{display:flex;gap:8px;align-items:center}
 .lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg)}
 .lang button{font:600 12px/1 var(--f-mono);letter-spacing:.04em;border:0;background:none;color:var(--fg-3);padding:7px 10px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.lang button[aria-pressed="true"]{background:var(--green);color:#fff}
 .burger{display:none;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:38px;height:38px;border-radius:10px;cursor:pointer;place-items:center}
-@media (max-width:980px){
+@media (max-width:1020px){
   .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-left,0px)) 16px}
   .menu.open{display:flex}
   .menu a{padding:12px 8px;font-size:16px}
@@ -79,373 +80,287 @@ p{margin:0}
 }
 
 /* HERO */
-.hero{position:relative;background:var(--bg);color:var(--fg);overflow:hidden;isolation:isolate;border-bottom:1px solid var(--line)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;
-  background:
-   radial-gradient(900px 520px at 100% 100%,rgba(0,112,62,.10),transparent 62%),
-   radial-gradient(520px 320px at 92% 92%,rgba(0,168,90,.10),transparent 65%),
-   var(--bg)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;
-  background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);
-  background-size:48px 48px;mask-image:linear-gradient(180deg,#000 20%,transparent 95%);-webkit-mask-image:linear-gradient(180deg,#000 20%,transparent 95%)}
-#axes{position:absolute;inset:0;z-index:-1;pointer-events:none;width:100%;height:100%}
-.hero-in{padding-block:128px 104px;display:grid;gap:28px;justify-items:start;max-width:var(--w)}
-.chip{display:inline-flex;align-items:center;gap:8px;font:500 12.5px/1 var(--f-mono);letter-spacing:.02em;color:var(--fg-2);border:1px solid var(--line);background:var(--bg);padding:9px 14px;border-radius:999px}
+.hero{position:relative;color:var(--fg);overflow:hidden;isolation:isolate;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#FFFFFF 0%,#F4F9F6 100%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent 0%,#000 55%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 55%,transparent 100%)}
+.hero-in{padding-block:88px 0;display:grid;gap:28px;justify-items:start}
+.hero-grid{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:24px;align-items:center}
+.hero-text{display:grid;gap:26px;justify-items:start;min-width:0}
+.chip{display:inline-flex;align-items:center;gap:8px;font:500 12.5px/1 var(--f-mono);letter-spacing:.02em;color:var(--green);border:1px solid var(--line-g);padding:9px 14px;border-radius:999px}
 .chip i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,112,62,.14)}
-.hero h1{font-size:clamp(40px,7vw,84px);line-height:1.02;font-weight:800;letter-spacing:-.045em;max-width:17ch;color:var(--ink)}
+.kicker{font:500 12px/1.4 var(--f-mono);letter-spacing:.16em;color:var(--fg-3);text-transform:uppercase}
+.kicker b{color:var(--green);font-weight:500}
+.hero h1{font-size:clamp(40px,4.9vw,66px);line-height:1.02;font-weight:800;letter-spacing:-.04em;color:var(--ink);max-width:13ch}
 .hero h1 em{font-style:normal;color:var(--green)}
-.hero h1 .ko{font-size:.82em;letter-spacing:-.04em;line-height:1.15;display:block;max-width:none}
-.hero .lede{font-size:clamp(16px,1.6vw,19px);color:var(--fg-2);max-width:54ch;line-height:1.6}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.hero h1 .ko{font-size:.9em;line-height:1.12;display:block;max-width:none}
+.lede{display:grid;gap:10px;max-width:52ch}
+.lede strong{font-size:clamp(18px,1.8vw,22px);font-weight:600;color:var(--fg);letter-spacing:-.01em;line-height:1.4}
+.lede span{font-size:clamp(15px,1.4vw,17px);color:var(--fg-2);line-height:1.65}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:14px 22px;border-radius:12px;transition:transform .15s,background .15s,border-color .15s}
 .btn:hover{transform:translateY(-1px)}
-.btn-w{background:var(--green);color:#fff}
-.btn-w:hover{background:var(--green-strong)}
+.btn-g{background:var(--green);color:#fff}
+.btn-g:hover{background:var(--green-strong)}
 .btn-o{border:1px solid var(--line);color:var(--fg);background:var(--bg)}
 .btn-o:hover{border-color:var(--fg)}
-.hero-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--fg);margin-top:56px;width:100%}
-.hero-meta div{padding:22px 20px 0 0}
-.hero-meta strong{display:block;font:700 clamp(26px,3vw,36px)/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.hero-meta span{font-size:13px;color:var(--fg-3)}
-@media (max-width:640px){.hero-in{padding-block:88px 72px}.hero-meta{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}}
+.field{position:relative;margin:0;min-width:0;aspect-ratio:1/0.86;max-width:100%}
+.field canvas{position:absolute;inset:0;width:100%;height:100%}
+.field figcaption{position:absolute;left:0;right:0;bottom:-6px;display:flex;gap:14px;align-items:center;font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);white-space:nowrap}
+.field figcaption span:first-child{color:var(--green)}
+.field figcaption::after{content:"";flex:1;height:1px;background:var(--line-g)}
+.hero-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:64px;border-top:1px solid var(--line-g);width:100%}
+.hero-meta div{padding:24px 24px 28px 0;display:grid;gap:6px;align-content:start}
+.hero-meta div+div{padding-left:24px;border-left:1px solid var(--line-g)}
+.hero-meta strong{font:800 clamp(28px,3vw,38px)/1 var(--f-display);letter-spacing:-.03em;color:var(--green)}
+.hero-meta b{font-size:15px;font-weight:600;color:var(--fg)}
+.hero-meta span{font-size:13px;color:var(--fg-3);line-height:1.5}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:8px}.field{max-width:560px;width:100%;justify-self:center;aspect-ratio:1/0.8}}
+@media (max-width:640px){.hero-in{padding-block:64px 0}.hero-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-meta div{padding:18px 12px 18px 0}.hero-meta div+div{padding-left:12px}.hero-meta div:nth-child(3){border-left:0;padding-left:0}.hero-meta div:nth-child(n+3){border-top:1px solid var(--line-g)}.field figcaption{font-size:10px;gap:8px}}
 
 /* SECTIONS */
 section.s{padding-block:112px}
 section.alt{background:var(--bg-2)}
 .eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:18px;height:1px;background:currentColor}
-.head{display:grid;gap:16px;margin-bottom:56px;max-width:720px}
-.head h2{font-size:clamp(30px,4vw,46px);line-height:1.12;font-weight:700}
-.head p{color:var(--fg-2);font-size:17px;max-width:62ch}
-.head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.head{display:grid;gap:16px;margin-bottom:56px;max-width:760px}
+.head h2{font-size:clamp(32px,4vw,48px);line-height:1.12;font-weight:700}
+.head p{color:var(--fg-2);font-size:17px;max-width:64ch}
+.head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
 .head-row .head{margin-bottom:0}
-@media (max-width:640px){section.s{padding-block:76px}.head{margin-bottom:36px}}
+.sub-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:88px 0 24px;padding-bottom:14px;border-bottom:2px solid var(--green)}
+.head+.sub-h{margin-top:0}
+.sub-h h3{font-size:24px;font-weight:700}
+.sub-h p{font:500 12px/1.4 var(--f-mono);letter-spacing:.08em;color:var(--fg-3);text-transform:uppercase}
+@media (max-width:640px){section.s{padding-block:76px}.head{margin-bottom:36px}.sub-h{margin-top:64px}}
 
-/* About */
-.about{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;align-items:start}
-.about-text{display:grid;gap:20px;color:var(--fg-2);font-size:17px;min-width:0}
-.about-text p strong{color:var(--fg);font-weight:600}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.tag{font-size:13px;font-weight:500;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--fg-2);background:var(--card)}
-.stats{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
-.stats div{padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stats div:nth-child(2n){border-right:0}
-.stats div:nth-last-child(-n+2){border-bottom:0}
-.stats strong{display:block;font:700 40px/1 var(--f-display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.stats strong sup{font-size:.5em;color:var(--green);vertical-align:top;margin-left:2px}
-.stats span{display:block;margin-top:10px;font-size:13.5px;color:var(--fg-3)}
-@media (max-width:860px){.about{grid-template-columns:1fr;gap:40px}}
+/* ABOUT */
+.quote{font-family:var(--f-display);font-size:clamp(24px,3.2vw,38px);line-height:1.3;font-weight:600;letter-spacing:-.02em;color:var(--fg);max-width:30ch;margin-bottom:56px}
+.quote em{font-style:normal;color:var(--green)}
+.quote::before{content:"\201C";display:block;font-size:2em;line-height:.6;color:var(--green);margin-bottom:8px}
+.about{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
+.about-text{display:grid;gap:22px;color:var(--fg-2);font-size:17px;min-width:0}
+.about-text strong{color:var(--fg);font-weight:700}
+.vision{border-top:1px solid var(--line);padding-top:22px;display:grid;gap:8px}
+.vision small{font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+.vision b{font-size:20px;line-height:1.4;color:var(--fg);font-weight:700}
+.pillars{background:var(--green);color:#fff;border-radius:18px;padding:32px;display:grid;gap:22px;box-shadow:var(--shadow)}
+.pillars h3{font-size:13px;font-weight:500;font-family:var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.pillars li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 0;border-top:1px solid rgba(255,255,255,.18);font-size:17px;font-weight:600;line-height:1.4}
+.pillars li i{font:500 12px/1.6 var(--f-mono);font-style:normal;color:rgba(255,255,255,.6)}
+.pillars p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.85);border-top:1px solid rgba(255,255,255,.18);padding-top:18px}
+.statement{margin-top:56px;padding:28px 32px;border-radius:var(--r);background:var(--bg-2);border:1px solid var(--line-g);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.statement .tag{font:600 12px/1 var(--f-mono);letter-spacing:.1em;color:var(--green);text-transform:uppercase;white-space:nowrap}
+.statement p{font-size:18px;line-height:1.55;color:var(--fg);font-weight:500}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:36px}.statement{grid-template-columns:1fr;gap:10px;padding:22px}}
 
-/* Research */
-.areas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--fg)}
-.area{padding:28px 24px 32px 0;display:grid;gap:14px;align-content:start;border-right:1px solid var(--line);padding-left:24px}
-.area:first-child{padding-left:0}
-.area:last-child{border-right:0}
-.area .code{font:500 12px/1 var(--f-mono);color:var(--fg-3);letter-spacing:.06em}
-.area-ic{width:44px;height:44px;border-radius:12px;background:var(--green-soft);color:var(--green);display:grid;place-items:center}
-.area-ic svg{width:22px;height:22px}
-.area h3{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
-.area p{font-size:14.5px;color:var(--fg-2)}
-.area ul{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px}
-.area li{font:400 12.5px/1.4 var(--f-mono);color:var(--fg-3)}
-.area li::before{content:"— "}
-@media (max-width:980px){.areas{grid-template-columns:1fr 1fr}.area:nth-child(2n){border-right:0}.area:nth-child(3){padding-left:0}.area:nth-child(n+3){border-top:1px solid var(--line)}}
-@media (max-width:560px){.areas{grid-template-columns:1fr}.area{border-right:0;padding-left:0!important}.area+.area{border-top:1px solid var(--line)}}
+/* RESEARCH FLOW */
+.flow-intro{display:grid;gap:12px;color:var(--fg-2);font-size:16.5px;max-width:78ch;margin-bottom:32px}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;position:relative}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 14px 18px;display:grid;gap:12px;align-content:start;position:relative;min-width:0}
+.stage .n{width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font:600 12px/1 var(--f-mono)}
+.stage h4{font-size:15px;font-weight:700;line-height:1.3;letter-spacing:-.01em}
+.stage ul{display:grid;gap:6px}
+.stage li{font-size:12.5px;line-height:1.4;color:var(--fg-2);padding:6px 8px;border-radius:6px;background:var(--bg-2)}
+.stage .out{font:500 11px/1.45 var(--f-mono);color:var(--green);border-top:1px dashed var(--line-g);padding-top:10px;letter-spacing:.01em}
+.stage:not(:last-child)::after{content:"";position:absolute;right:-9px;top:28px;width:8px;height:8px;border-top:1.5px solid var(--green);border-right:1.5px solid var(--green);transform:rotate(45deg);z-index:1}
+.stage.hub{background:var(--green);border-color:var(--green);color:#fff}
+.stage.hub .n{background:#fff;color:var(--green)}
+.stage.hub li{background:rgba(255,255,255,.12);color:#fff}
+.stage ul.assets{grid-template-columns:1fr 1fr;gap:5px}
+.stage ul.assets li{padding:6px 4px;text-align:center;font-size:11.5px}
+.stage ul.xs li{display:grid;grid-template-columns:30px 1fr;align-items:center;gap:8px;background:transparent;padding:0}
+.stage ul.xs li b{width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font:600 11px/1 var(--f-mono)}
+.loop{margin-top:14px;border:1px solid var(--line-g);border-radius:999px;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card)}
+.loop .n{width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font:600 12px/1 var(--f-mono);flex:none}
+.loop b{font-size:15px}
+.loop span{font:400 12.5px/1.5 var(--f-mono);color:var(--fg-3)}
+.loop svg{margin-left:auto;flex:none}
+@media (max-width:1100px){.flow{grid-template-columns:repeat(4,minmax(0,1fr))}.stage:nth-child(4)::after{display:none}}
+@media (max-width:700px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.stage::after{display:none}.loop{border-radius:14px}.loop svg{display:none}}
 
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:72px}
-.proj{border:1px solid var(--line);border-radius:var(--r);padding:28px;background:var(--card);display:grid;gap:14px;align-content:start;transition:border-color .2s,transform .2s}
-.proj:hover{border-color:var(--fg-3);transform:translateY(-2px)}
-.proj-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.status{font:500 11.5px/1 var(--f-mono);letter-spacing:.04em;padding:6px 10px;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
-.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
-.st-on{color:var(--green);background:var(--green-soft)}
-.st-new{color:var(--fg-2);background:var(--bg-2)}
-.proj .yr{font:400 12px/1 var(--f-mono);color:var(--fg-3)}
-.proj h3{font-size:18px;font-weight:700;line-height:1.35;letter-spacing:-.02em}
-.proj p{font-size:14.5px;color:var(--fg-2)}
-.proj .fund{font-size:13px;color:var(--fg-3);border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
-@media (max-width:900px){.projects{grid-template-columns:1fr}}
+/* FIELDS */
+.fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.fieldc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;display:grid;grid-template-rows:auto auto 1fr auto;gap:14px;box-shadow:var(--shadow);transition:border-color .2s,transform .2s}
+.fieldc:hover{border-color:var(--green);transform:translateY(-2px)}
+.fieldc .code{font:600 12px/1 var(--f-mono);color:var(--green);letter-spacing:.06em}
+.fieldc h4{font-size:19px;font-weight:700;line-height:1.3}
+.fieldc .kw{display:flex;flex-wrap:wrap;gap:6px;align-content:start}
+.fieldc .kw span{font-size:12.5px;padding:4px 9px;border-radius:999px;background:var(--green-soft);color:var(--green-strong)}
+.fieldc .motto{font-size:14.5px;font-weight:600;line-height:1.45;color:var(--fg);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:1000px){.fields{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
 
-/* Members */
-.pi{display:grid;grid-template-columns:280px 1fr;gap:48px;border:1px solid var(--line);border-radius:20px;padding:40px;background:var(--card)}
-.portrait{aspect-ratio:4/5;max-width:100%;border-radius:14px;background:linear-gradient(160deg,#F5F7F6 0%,#E8F3ED 60%,#CFE7DA 100%);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:end start;padding:20px;color:var(--green)}
-.portrait::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,112,62,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,112,62,.08) 1px,transparent 1px);background-size:28px 28px}
-.portrait span{position:relative;z-index:1;font:800 64px/1 var(--f-display);letter-spacing:-.05em;opacity:.95}
-.pi-body{display:grid;gap:18px;align-content:start;min-width:0}
-.role{font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
-.pi h3{font-size:clamp(26px,3vw,34px);font-weight:700}
-.pi h3 small{font-size:.55em;font-weight:500;color:var(--fg-3);margin-left:10px;letter-spacing:0}
-.pi-body>p{color:var(--fg-2);max-width:62ch}
-.edu{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;font-size:14.5px;border-top:1px solid var(--line);padding-top:18px}
-.edu dt{font:500 13px/1.6 var(--f-mono);color:var(--fg-3);font-variant-numeric:tabular-nums}
-.edu dd{margin:0;color:var(--fg)}
+/* AXES */
+.axes{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:16px;align-items:stretch}
+.axis{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:26px;display:grid;gap:14px;align-content:start}
+.axis-top{display:flex;align-items:center;gap:12px}
+.axis-top b{width:36px;height:36px;border-radius:10px;background:var(--green);color:#fff;display:grid;place-items:center;font:700 16px/1 var(--f-mono);flex:none}
+.axis h4{font-size:19px;font-weight:700}
+.axis h4 small{display:block;font:500 11.5px/1.4 var(--f-mono);letter-spacing:.06em;color:var(--fg-3);text-transform:uppercase}
+.axis li{font-size:15px;color:var(--fg-2);padding:10px 0 10px 18px;border-top:1px solid var(--line);position:relative}
+.axis li::before{content:"";position:absolute;left:0;top:1.15em;width:8px;height:1.5px;background:var(--green)}
+.axis-quote{border-radius:var(--r);background:var(--ink);color:#fff;padding:28px;display:grid;align-content:space-between;gap:20px}
+.axis-quote p{font-size:19px;line-height:1.55;font-weight:500}
+.axis-quote small{font:500 11.5px/1.4 var(--f-mono);letter-spacing:.08em;color:#7FD3A6;text-transform:uppercase}
+@media (max-width:900px){.axes{grid-template-columns:1fr}}
+
+/* TECH */
+.tech{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.tcol{padding:8px 22px 8px 0;display:grid;gap:14px;align-content:start;min-width:0}
+.tcol+.tcol{padding-left:22px;border-left:1px solid var(--line)}
+.tcol h4{font-size:17px;font-weight:700;display:flex;align-items:center;gap:10px}
+.tcol h4 i{width:8px;height:8px;border-radius:2px;background:var(--green);flex:none}
+.tcol .sum{font-size:13.5px;color:var(--fg-3);line-height:1.55}
+.tcol ul{display:flex;flex-wrap:wrap;gap:6px}
+.tcol li{font:500 12px/1.3 var(--f-mono);padding:6px 9px;border:1px solid var(--line);border-radius:7px;color:var(--fg-2);background:var(--card)}
+.tcol li.sub{border-color:var(--line-g);color:var(--green-strong);background:var(--green-soft)}
+@media (max-width:1000px){.tech{grid-template-columns:1fr 1fr;row-gap:24px}.tcol:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:560px){.tech{grid-template-columns:1fr}.tcol{padding-left:0!important;border-left:0!important}.tcol+.tcol{border-top:1px solid var(--line);padding-top:24px}}
+
+/* PROJECTS */
+.projects{display:grid;gap:12px}
+.proj{display:grid;grid-template-columns:120px 1fr auto;gap:28px;align-items:center;padding:24px 28px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);transition:border-color .2s}
+.proj:hover{border-color:var(--green)}
+.proj .period{font:500 13px/1.5 var(--f-mono);color:var(--fg-3);font-variant-numeric:tabular-nums}
+.proj .period b{display:block;color:var(--green);font-weight:600}
+.proj h3{font-size:18px;font-weight:700;line-height:1.45;letter-spacing:-.01em}
+.proj .fund{font-size:14px;color:var(--fg-3);margin-top:4px}
+.role{font:600 12px/1 var(--f-mono);letter-spacing:.04em;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.role.pi{background:var(--green);color:#fff}
+.role.co{background:var(--green-soft);color:var(--green-strong)}
+@media (max-width:760px){.proj{grid-template-columns:1fr;gap:10px;padding:20px}.proj .role{justify-self:start}}
+.awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.award{border-radius:var(--r);padding:26px;background:var(--card);border:1px solid var(--line);display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.award::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;border:1px solid var(--line-g)}
+.award .yr{font:800 30px/1 var(--f-display);color:var(--green);letter-spacing:-.03em}
+.award h4{font-size:17px;font-weight:700;line-height:1.4}
+.award p{font-size:14px;color:var(--fg-3)}
+.award.up{background:var(--bg-2);border-style:dashed;border-color:var(--line-g)}
+@media (max-width:860px){.awards{grid-template-columns:1fr}}
+
+/* PEOPLE */
+.pi{display:grid;grid-template-columns:300px 1fr;gap:48px;border:1px solid var(--line-g);border-radius:20px;padding:40px;background:var(--card);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.pi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--green)}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:14px;background:linear-gradient(155deg,#00703E 0%,#005A32 55%,#003D22 100%);position:relative;overflow:hidden;display:grid;place-items:end start;padding:22px;color:#fff}
+.portrait::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:28px 28px}
+.portrait span{position:relative;z-index:1;font:800 60px/1 var(--f-display);letter-spacing:-.04em}
+.portrait small{position:absolute;z-index:1;left:22px;top:22px;font:500 11px/1 var(--f-mono);letter-spacing:.12em;color:rgba(255,255,255,.7)}
+.pi-body{display:grid;gap:20px;align-content:start;min-width:0}
+.pi .role-l{font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.pi h3{font-size:clamp(28px,3vw,36px);font-weight:700}
+.pi h3 small{font-size:.5em;font-weight:500;color:var(--fg-3);margin-left:10px;letter-spacing:0}
+.pi .aff{font-size:15px;color:var(--fg-2);margin-top:-10px}
+.pi-bio{color:var(--fg-2);max-width:66ch;font-size:16px}
+.cv{display:grid;grid-template-columns:1fr 1fr;gap:28px;border-top:1px solid var(--line);padding-top:22px}
+.cv h4{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.cv dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:10px 16px;font-size:14.5px;line-height:1.5}
+.cv dt{font:500 12.5px/1.6 var(--f-mono);color:var(--fg-3);font-variant-numeric:tabular-nums}
+.cv dd{margin:0;color:var(--fg);min-width:0}
+.cv dd small{display:block;color:var(--fg-3);font-size:13px}
 .links{display:flex;gap:8px;flex-wrap:wrap}
-.lk{font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:10px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,color .15s}
+.lk{font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,color .15s;background:var(--card)}
 .lk:hover{border-color:var(--green);color:var(--green)}
-.lk svg{width:14px;height:14px}
-@media (max-width:820px){.pi{grid-template-columns:1fr;padding:24px;gap:28px}.portrait{aspect-ratio:16/9}}
+@media (max-width:900px){.pi{grid-template-columns:1fr;padding:24px;gap:28px}.portrait{aspect-ratio:16/8}.cv{grid-template-columns:1fr}}
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.person{border:1px dashed var(--line-g);border-radius:var(--r);padding:24px;background:var(--card);display:grid;gap:12px;align-content:start}
+.person .av{width:44px;height:44px;border-radius:50%;border:1px dashed var(--green);color:var(--green);display:grid;place-items:center;font:500 20px/1 var(--f-mono)}
+.person h4{font-size:17px;font-weight:700}
+.person p{font-size:14px;color:var(--fg-2)}
+.person a{font-size:14px;font-weight:600;color:var(--green)}
+@media (max-width:860px){.people{grid-template-columns:1fr}}
 
-.sub-h{display:flex;align-items:baseline;gap:12px;margin:64px 0 20px;font-family:var(--f-display);font-size:20px;font-weight:700;letter-spacing:-.02em}
-.sub-h span{font:400 13px/1 var(--f-mono);color:var(--fg-3);letter-spacing:0}
-.people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.person{border:1px solid var(--line);border-radius:var(--r);padding:22px;background:var(--card);display:grid;gap:14px;align-content:start}
-.avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 16px/1 var(--f-display);color:#fff;background:var(--ink)}
-.avatar.g{background:var(--green)}
-.person h4{margin:0;font-size:16px;font-weight:700;letter-spacing:-.01em}
-.person .pos{font-size:13px;color:var(--fg-3);margin-top:2px}
-.person p{font-size:13.5px;color:var(--fg-2)}
-.person.open{border-style:dashed;background:transparent}
-.person.open .avatar{background:transparent;border:1px dashed var(--fg-3);color:var(--fg-3)}
-.person.open a{font-size:13.5px;font-weight:600;color:var(--green)}
-@media (max-width:980px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:480px){.people{grid-template-columns:1fr}}
-
-/* Publications */
+/* PUBLICATIONS */
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:12px;padding:4px;background:var(--card);flex-wrap:wrap}
-.seg button{font:600 14px/1 var(--f-body);padding:10px 16px;border:0;border-radius:9px;background:none;color:var(--fg-2);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.seg button{font:600 14px/1 var(--f-body);padding:10px 14px;border:0;border-radius:9px;background:none;color:var(--fg-2);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
 .seg button span{font:500 12px/1 var(--f-mono);color:var(--fg-3)}
-.seg button[aria-selected="true"]{background:var(--fg);color:var(--bg)}
-.seg button[aria-selected="true"] span{color:var(--bg);opacity:.7}
-.pubs{border-top:1px solid var(--fg)}
-.pub{display:grid;grid-template-columns:88px 1fr auto;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
-.pub .y{font:500 14px/1.5 var(--f-mono);color:var(--fg-3);font-variant-numeric:tabular-nums}
-.pub-body{min-width:0;display:grid;gap:6px}
-.pub h3{font-size:17px;font-weight:600;line-height:1.45;letter-spacing:-.01em}
+.seg button[aria-selected="true"]{background:var(--green);color:#fff}
+.seg button[aria-selected="true"] span{color:#fff;opacity:.8}
+.pubs{border-top:2px solid var(--green)}
+.pub{display:grid;grid-template-columns:72px 1fr auto;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.pub .y{font:600 14px/1.6 var(--f-mono);color:var(--green);font-variant-numeric:tabular-nums}
+.pub-body{min-width:0;display:grid;gap:5px}
+.pub h3{font-size:16.5px;font-weight:600;line-height:1.5;letter-spacing:-.005em;transition:color .15s}
 .pub .au{font-size:14px;color:var(--fg-2)}
-.pub .au b{color:var(--fg);font-weight:600}
-.pub .ve{font-size:14px;color:var(--fg-3);font-style:italic}
-.pub .kw{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-.pub .kw span{font:500 11.5px/1 var(--f-mono);padding:5px 8px;border-radius:6px;background:var(--bg-2);color:var(--fg-2)}
-.pub .doi{font:500 12.5px/1 var(--f-mono);padding:8px 12px;border:1px solid var(--line);border-radius:8px;white-space:nowrap;transition:border-color .15s,color .15s}
-.pub .doi:hover{border-color:var(--green);color:var(--green)}
+.pub .au b{color:var(--fg);font-weight:700}
+.pub .ve{font-size:14px;color:var(--fg-3)}
+.pub .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pub .tags span{font:500 11.5px/1 var(--f-mono);padding:5px 8px;border-radius:6px;background:var(--green-soft);color:var(--green-strong)}
+.pub .tags span.t{background:var(--bg-2);color:var(--fg-3)}
+.pub .go{font:500 12px/1 var(--f-mono);padding:8px 11px;border:1px solid var(--line);border-radius:8px;white-space:nowrap;transition:border-color .15s,color .15s}
+.pub .go:hover{border-color:var(--green);color:var(--green)}
+.pub:hover h3{color:var(--green)}
 .pub.hide{display:none}
 .more{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .btn-line{font:600 14px/1 var(--f-body);padding:12px 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
 .btn-line:hover{border-color:var(--fg)}
-@media (max-width:700px){.pub{grid-template-columns:1fr;gap:10px}.pub .doi{justify-self:start}}
+@media (max-width:700px){.pub{grid-template-columns:1fr;gap:8px}.pub .go{justify-self:start}}
 
-/* Teaching */
-.courses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.course{border:1px solid var(--line);border-radius:var(--r);padding:32px;background:var(--card);display:grid;gap:16px;align-content:start}
-.course .cc{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.course .num{font:600 13px/1 var(--f-mono);padding:7px 10px;border-radius:8px;background:var(--fg);color:var(--bg)}
-.course .term{font:400 13px/1 var(--f-mono);color:var(--fg-3)}
-.course h3{font-size:21px;font-weight:700;line-height:1.3}
-.course p{font-size:15px;color:var(--fg-2)}
-.course .rate{display:flex;align-items:baseline;gap:8px;border-top:1px solid var(--line);padding-top:16px;font-size:13.5px;color:var(--fg-3)}
-.course .rate strong{font:700 22px/1 var(--f-display);color:var(--fg);font-variant-numeric:tabular-nums}
-@media (max-width:760px){.courses{grid-template-columns:1fr}.course{padding:24px}}
+/* JOIN */
+.join{background:var(--bg-3)}
+.join-top{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;margin-bottom:24px}
+.join-lead{display:grid;gap:14px;font-size:19px;color:var(--fg);line-height:1.6;font-weight:500}
+.join-lead p+p{color:var(--fg-2);font-size:16.5px;font-weight:400}
+.path{background:var(--card);border:1px solid var(--line-g);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.path h4{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.path ol{margin:0;padding:0;list-style:none;counter-reset:s}
+.path li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:center;padding:8px 0;font-size:15px;font-weight:600;position:relative}
+.path li::before{content:counter(s);width:26px;height:26px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font:600 12px/1 var(--f-mono)}
+.path li:last-child::before{background:var(--green);color:#fff}
+.path li:not(:last-child)::after{content:"";position:absolute;left:12.5px;top:34px;height:14px;width:1px;background:var(--line-g)}
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.track{background:var(--card);border:1px solid var(--line-g);border-radius:var(--r);padding:30px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow)}
+.track .k{font:600 12px/1 var(--f-mono);color:var(--green);letter-spacing:.1em;text-transform:uppercase}
+.track h3{font-size:23px;font-weight:700}
+.track p{font-size:15.5px;color:var(--fg-2)}
+.track blockquote{margin:4px 0 0;padding:16px 18px;border-left:3px solid var(--green);background:var(--bg-2);border-radius:0 10px 10px 0;font-size:15px;font-weight:600;color:var(--fg);line-height:1.55}
+.track ul{display:flex;flex-wrap:wrap;gap:6px}
+.track li{font-size:13px;padding:6px 10px;border-radius:999px;border:1px solid var(--line-g);color:var(--green-strong)}
+.apply{margin-top:16px;background:var(--green);color:#fff;border-radius:var(--r);padding:26px 30px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.apply p{color:rgba(255,255,255,.88);max-width:62ch}
+.apply p strong{color:#fff}
+.apply .btn{background:#fff;color:var(--green)}
+@media (max-width:860px){.join-top,.tracks{grid-template-columns:1fr;gap:20px}.track{padding:22px}.apply{padding:22px}}
 
-/* Join */
-.join{background:var(--bg-2)}
-.tracks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.track{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:grid;gap:14px;align-content:start}
-.track .k{font:500 12px/1 var(--f-mono);color:var(--green);letter-spacing:.08em;text-transform:uppercase}
-.track h3{font-size:22px;font-weight:700}
-.track>p{font-size:14.5px;color:var(--fg-2)}
-.track ul{margin:0;padding:14px 0 0;list-style:none;display:grid;gap:10px;border-top:1px solid var(--line)}
-.track li{font-size:14.5px;color:var(--fg-2);padding-left:20px;position:relative}
-.track li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:1px;background:var(--green)}
-.apply{margin-top:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:32px}
-.apply p{color:var(--fg-2);max-width:60ch}
-.apply p strong{color:var(--fg);font-weight:600}
-@media (max-width:860px){.tracks{grid-template-columns:1fr}.track{padding:24px}}
-
-/* Contact */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:64px}
-.contact dl{margin:0;display:grid;gap:0;border-top:1px solid var(--fg)}
-.contact dl div{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
-.contact dt{font:500 12px/1.8 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact dl{margin:0;display:grid;border-top:2px solid var(--green)}
+.contact dl div{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.contact dt{font:500 12px/1.9 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
 .contact dd{margin:0;font-size:16px;min-width:0;overflow-wrap:anywhere}
-.copy{margin-left:8px;font:500 11.5px/1 var(--f-mono);padding:5px 8px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--fg-2);cursor:pointer;vertical-align:middle}
-.copy:hover{border-color:var(--green);color:var(--green)}
-.map{border:1px solid var(--line);border-radius:var(--r);background:var(--bg-2);position:relative;overflow:hidden;min-height:320px}
+.contact dd small{display:block;color:var(--fg-3);font-size:13.5px}
+.pending{font:500 12px/1 var(--f-mono);padding:6px 9px;border-radius:6px;background:var(--bg-2);color:var(--fg-3);border:1px dashed var(--line-g)}
+.map{border:1px solid var(--line-g);border-radius:var(--r);background:var(--bg-2);position:relative;overflow:hidden;min-height:320px}
 .map svg{position:absolute;inset:0;width:100%;height:100%}
-.map .pin{position:absolute;left:58%;top:46%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:6px}
-.map .pin b{font:600 12.5px/1 var(--f-body);background:var(--fg);color:var(--bg);padding:8px 10px;border-radius:8px;white-space:nowrap}
-.map .pin i{width:14px;height:14px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px color-mix(in srgb,var(--green) 25%,transparent)}
+.map .pin{position:absolute;left:56%;top:48%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:6px}
+.map .pin b{font:600 13px/1 var(--f-body);background:var(--fg);color:#fff;padding:9px 11px;border-radius:8px;white-space:nowrap}
+.map .pin i{width:14px;height:14px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(0,112,62,.22)}
 @media (max-width:860px){.contact{grid-template-columns:1fr;gap:32px}.contact dl div{grid-template-columns:1fr;gap:4px}}
 
-/* Footer */
-footer{border-top:1px solid var(--line);padding-block:48px}
+/* FOOTER */
+footer{background:var(--bg-2);border-top:2px solid var(--green);padding-block:48px}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
 footer nav{display:flex;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--fg-2)}
 footer nav a:hover{color:var(--green)}
-footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:8px}
-
-.sample{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;font:500 12px/1 var(--f-mono);background:var(--fg);color:var(--bg);padding:10px 14px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.18)}
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--fg);color:var(--bg);font-size:14px;padding:10px 16px;border-radius:10px;transition:.2s;z-index:70;pointer-events:none}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-
-/* ================= v3 refinements: stronger green system ================= */
-.nav{border-bottom-color:var(--line)}
-.menu a.on{color:var(--green);background:var(--green-soft)}
-.lang button[aria-pressed="true"]{background:var(--green);color:#fff}
-
-/* hero: split layout with BIM model visual */
-.hero::before{background:
-   radial-gradient(800px 520px at 88% 40%,rgba(0,112,62,.10),transparent 62%),
-   linear-gradient(180deg,#FFFFFF 0%,#F3F8F5 100%)}
-.hero-grid{width:100%;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
-.hero-in{padding-block:96px 80px}
-.hero-text{display:grid;gap:28px;justify-items:start;min-width:0}
-.iso{margin:0}
-.hero h1{font-size:clamp(40px,5.4vw,72px);max-width:13ch}
-.hero-meta{border-top:2px solid var(--green)}
-.hero-meta strong{color:var(--green)}
-.iso{position:relative;max-width:100%;aspect-ratio:430/400}
-.iso svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.i-gr{stroke:var(--iso-grid);fill:none}.i-col{stroke:var(--green);stroke-width:1.2;stroke-opacity:.6;fill:none}.i-hid{stroke:var(--green);stroke-opacity:.3;stroke-dasharray:3 3;fill:none}
-.i-s{fill:var(--iso-slab);stroke:var(--green);stroke-opacity:.55}.i-sh{fill:var(--iso-hl);stroke:var(--green);stroke-width:1.4}
-.i-e1{fill:var(--green);fill-opacity:.25}.i-e2{fill:var(--green);fill-opacity:.18}
-.fl polygon{transition:fill .6s ease,fill-opacity .6s ease,stroke-width .6s}
-.fl.on .i-s{fill:var(--iso-hl);stroke-opacity:1;stroke-width:1.4}.fl.on .i-e1{fill-opacity:.9}.fl.on .i-e2{fill-opacity:.7}
-.iso .bub{fill:#fff;stroke:rgba(0,112,62,.5)}
-.iso .bt{font:500 9px var(--f-mono);fill:var(--green);text-anchor:middle}
-.call{position:absolute;display:grid;gap:4px;background:#fff;border:1px solid var(--line-g);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow);font-size:12.5px;line-height:1.35;white-space:nowrap}
-.call b{font:500 10.5px/1 var(--f-mono);color:var(--fg-3);letter-spacing:.04em}
-.call span{font-weight:600;color:var(--fg)}
-.call em{font-style:normal;font:500 11px/1 var(--f-mono);color:var(--green);display:inline-flex;gap:5px;align-items:center}
-.call em::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
-.call.dark{background:var(--green);border-color:var(--green)}
-.call.dark b{color:rgba(255,255,255,.7)}.call.dark span{color:#fff}
-.call::after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--green);border:2px solid #fff;box-shadow:0 0 0 4px rgba(0,112,62,.18)}
-.c1{right:-2%;top:40%}.c1::after{left:-26px;top:50%;margin-top:-4px}
-.c2{left:-4%;top:64%}.c2::after{right:-24px;top:30%}
-.c3{left:22%;top:2%}.c3::after{display:none}
-@media (prefers-reduced-motion:no-preference){.call{animation:float 6s ease-in-out infinite}.c2{animation-delay:-2s}.c3{animation-delay:-4s}}
-@keyframes float{50%{transform:translateY(-6px)}}
-@media (max-width:980px){.hero-grid{grid-template-columns:1fr}.iso{max-width:520px;width:100%;justify-self:center}}
-@media (max-width:520px){.call{font-size:11.5px;padding:8px 10px}.c1{right:0}.c2{left:0}.c3{left:10%}}
-
-/* section headers */
-.head h2 .accent,.head h2 em{font-style:normal;color:var(--green)}
-section.alt{background:var(--bg-2)}
-
-/* about */
-.stats{border-color:var(--line-g)}
-.stats div:first-child{background:var(--green);color:#fff}
-.stats div:first-child span{color:rgba(255,255,255,.75)}
-.stats strong{color:var(--green)}
-.stats div:first-child strong{color:#fff}
-.tag{border-color:var(--line-g);color:var(--green);background:var(--green-soft)}
-
-/* research */
-.areas{border-top:2px solid var(--green)}
-.area{transition:background .2s}
-.area:hover{background:linear-gradient(180deg,var(--bg-3),transparent)}
-.area .code{color:var(--green)}
-.area-ic{background:var(--green);color:#fff}
-.proj{box-shadow:var(--shadow);border-color:var(--line)}
-.proj.feature{background:var(--green);border-color:var(--green);color:#fff}
-.proj.feature p{color:rgba(255,255,255,.82)}
-.proj.feature .yr{color:rgba(255,255,255,.7)}
-.proj.feature .status{background:rgba(255,255,255,.16);color:#fff}
-.proj.feature .fund{border-top-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75)}
-.proj:hover{border-color:var(--green)}
-
-/* members */
-.pi{border-color:var(--line-g);box-shadow:var(--shadow);position:relative;overflow:hidden}
-.pi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--green)}
-.portrait{background:linear-gradient(155deg,#00703E 0%,#005A32 55%,#003D22 100%);border:0;color:#fff}
-.portrait::after{background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px)}
-.edu dt{color:var(--green)}
-.sub-h span{color:var(--green)}
-.avatar{background:var(--fg)}
-.avatar.g{background:var(--green)}
-.avatar.l{background:var(--bg-3);color:var(--green)}
-.person{transition:border-color .2s,transform .2s}
-.person:hover{border-color:var(--green);transform:translateY(-2px)}
-.person.open{border-color:var(--line-g);background:var(--green-soft)}
-.person.open .avatar{border-color:var(--green);color:var(--green)}
-
-/* publications */
-.pubs{border-top:2px solid var(--green)}
-.pub .y{color:var(--green);font-weight:600}
-.pub .kw span{background:var(--green-soft);color:var(--green)}
-.pub{transition:background .2s}
-.pub:hover h3{color:var(--green)}
-.seg button[aria-selected="true"]{background:var(--green);color:#fff}
-.seg button[aria-selected="true"] span{color:#fff}
-
-/* teaching */
-.course{box-shadow:var(--shadow)}
-.course .num{background:var(--green);color:#fff}
-.course .rate strong{color:var(--green)}
-
-/* join: light green band, solid green apply bar */
-.join{background:var(--bg-3)}
-.join .head h2{color:var(--fg)}
-.track{border-color:var(--line-g);box-shadow:var(--shadow)}
-.apply{background:var(--green);color:#fff;border:0;border-radius:var(--r);padding:28px 32px;margin-top:24px}
-.apply p{color:rgba(255,255,255,.85)}
-.apply p strong{color:#fff}
-.apply .btn-w{background:#fff;color:var(--green)}
-.apply .btn-w:hover{background:var(--bg-3)}
-@media (max-width:560px){.apply{padding:22px}}
-
-/* contact & footer */
-.contact dl{border-top:2px solid var(--green)}
-.contact dt{color:var(--green)}
-.map{background:var(--bg-2);border-color:var(--line-g)}
-footer{background:var(--bg-2);border-top:2px solid var(--green)}
-.sample{background:var(--green)}
-.hero-in{padding-block:112px 104px}
-h3.sub-h{margin:0 0 20px}
-.areas+h3.sub-h,.areas~h3.sub-h{margin-top:72px}
-.projects{margin-top:0}
-.more-link{font-weight:600;color:var(--green)}
-.proj.feature .more-link{color:#fff}
-footer small+small{margin-top:4px}
-.hero-in{padding-block:96px 0}
-.hero-meta{margin-top:72px;border-top:1px solid var(--line-g)}
-.hero-meta div{padding:24px 24px 28px 0;position:relative}
-.hero-meta div+div{padding-left:24px;border-left:1px solid var(--line-g)}
-.hero-meta strong sup{font-size:.5em;vertical-align:top}
-.chip{background:var(--green-soft);border-color:var(--line-g);color:var(--green)}
-.hero h1 em{background:linear-gradient(90deg,var(--green),#13A05E);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero::after{mask-image:radial-gradient(ellipse 70% 80% at 70% 40%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 70% 40%,#000 30%,transparent 80%)}
-.lede .en{display:block}
-@media (max-width:640px){.hero-in{padding-block:72px 0}.hero-meta div{padding:18px 12px 18px 0}.hero-meta div+div{padding-left:12px}.hero-meta div:nth-child(3){border-left:0;padding-left:0}}
-
-/* hero v5: abstract field */
-.hero::before{background:linear-gradient(180deg,#FFFFFF 0%,#F4F9F6 100%)}
-.hero::after{background-size:64px 64px;mask-image:linear-gradient(90deg,transparent 0%,#000 55%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 55%,transparent 100%)}
-.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:24px}
-.field{position:relative;margin:0;min-width:0;aspect-ratio:1/0.86;max-width:100%}
-.field canvas{position:absolute;inset:0;width:100%;height:100%}
-.field figcaption{position:absolute;left:0;right:0;bottom:-6px;display:flex;gap:14px;align-items:center;font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
-.field figcaption span:first-child{color:var(--green)}
-.field figcaption::after{content:"";flex:1;height:1px;background:var(--line-g)}
-.hero h1{font-size:clamp(42px,5.6vw,78px);line-height:.98;letter-spacing:-.05em}
-.hero h1 em{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--green)}
-.chip{background:transparent;border-color:var(--line-g)}
-@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:8px}.field{max-width:560px;width:100%;justify-self:center;aspect-ratio:1/0.8}}
-.field figcaption{white-space:nowrap}
-@media (max-width:520px){.field figcaption{font-size:10px;gap:8px}}
+footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
 </style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="SBI Lab home">
-      <span class="brand-mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M2 14V6l6-4 6 4v8"/><path d="M6 14V9h4v5"/></svg></span>
-      <span>SBI <b>Lab</b></span>
-    </a>
+    <a class="brand" href="#top" aria-label="CMX Lab home"><span class="brand-mark">CX</span><span>CMX <b>Lab</b></span></a>
     <div class="menu" id="menu">
       <a href="#about"><span class="ko">소개</span><span class="en">About</span></a>
       <a href="#research"><span class="ko">연구</span><span class="en">Research</span></a>
+      <a href="#projects"><span class="ko">과제·수상</span><span class="en">Projects</span></a>
       <a href="#members"><span class="ko">구성원</span><span class="en">Members</span></a>
       <a href="#publications"><span class="ko">논문</span><span class="en">Publications</span></a>
-      <a href="#teaching"><span class="ko">강의</span><span class="en">Teaching</span></a>
-      <a href="#join"><span class="ko">모집</span><span class="en">Join Us</span></a>
+      <a href="#join"><span class="ko">참여</span><span class="en">Join Us</span></a>
       <a href="#contact"><span class="ko">연락처</span><span class="en">Contact</span></a>
     </div>
     <div class="tools">
       <div class="lang" role="group" aria-label="Language">
-        <button type="button" id="lang-ko" data-lang="ko" aria-pressed="true">KO</button>
-        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" id="lang-ko" data-lang="ko" aria-pressed="false">KO</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
       </div>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
@@ -458,32 +373,35 @@ footer small+small{margin-top:4px}
   <div class="wrap">
     <div class="hero-in">
       <div class="hero-grid">
-      <div class="hero-text">
-      <span class="chip"><i></i><span class="ko">OO대학교 · 서울</span><span class="en">OO University · Seoul, Korea</span></span>
-      <h1>
-        <span class="en">Smart Built-environment <em>Intelligence</em> Lab</span>
-        <span class="ko">스마트 건설환경<br><em>지능</em> 연구실</span>
-      </h1>
-      <p class="lede">
-        <span class="ko">사람의 전문지식과 AI를 결합해 더 스마트하고 안전한 건축 환경을 위한 설계·시공 지능을 연구합니다.</span>
-        <span class="en">Human Knowledge, AI-empowered Design and Construction Intelligence for Smarter and Safer Built Environments.</span>
-      </p>
-      <div class="cta">
-        <a class="btn btn-w" href="#research"><span class="ko">연구 살펴보기</span><span class="en">Explore Research</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn btn-o" href="#join"><span class="ko">함께하기</span><span class="en">Join the Lab</span></a>
-      </div>
-      </div>
-      <figure class="field" aria-label="Abstract animation: a scanned point cloud resolving into a structured model">
-        <canvas id="field"></canvas>
-        <figcaption><span>FIG. 01</span><span class="en">Scan → Structure → Knowledge</span><span class="ko">스캔 → 구조 → 지식</span></figcaption>
-      </figure>
+        <div class="hero-text">
+          <span class="chip"><i></i><span class="ko">호남대학교 · 광주</span><span class="en">Honam University · Gwangju, Korea</span></span>
+          <span class="kicker"><b>Data</b> · Knowledge · Intelligence · <b>Action</b></span>
+          <h1>
+            <span class="en">Construction Management <em>Transformation</em> Lab</span>
+            <span class="ko">건설관리<br><em>트랜스포메이션</em><br>연구실</span>
+          </h1>
+          <div class="lede">
+            <strong class="en">From Construction Data to Knowledge, Intelligence, and Action.</strong>
+            <strong class="ko">건설 데이터에서 지식, 지능, 그리고 실행으로.</strong>
+            <span class="ko">건설산업에서 발생하는 다양한 데이터를 지식과 지능으로 전환하고, AI와 Agentic AI를 통해 설계·시공·운영의 실질적인 변화를 만듭니다.</span>
+            <span class="en">We transform diverse construction data into knowledge and intelligence, and create real change across design, construction, and operation through AI and agentic AI.</span>
+          </div>
+          <div class="cta">
+            <a class="btn btn-g" href="#research"><span class="ko">연구 살펴보기</span><span class="en">Explore Research</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            <a class="btn btn-o" href="#join"><span class="ko">함께하기</span><span class="en">Join the Lab</span></a>
+          </div>
+        </div>
+        <figure class="field" aria-label="Abstract animation: scattered construction data resolving into a structured model and a knowledge graph">
+          <canvas id="field"></canvas>
+          <figcaption><span>FIG. 01</span><span class="en">Data → Knowledge → Intelligence → Action</span><span class="ko">데이터 → 지식 → 지능 → 실행</span></figcaption>
+        </figure>
       </div>
       <div class="hero-meta">
-        <div><strong>3<sup>+</sup></strong><span class="ko">진행 중인 과제</span><span class="en">Active Projects</span></div>
-        <div><strong>20<sup>+</sup></strong><span class="ko">논문</span><span class="en">Publications</span></div>
-        <div><strong>2026</strong><span class="ko">연구실 설립</span><span class="en">Lab Founded</span></div>
-        <div><strong>Seoul</strong><span class="ko">OO대학교 건축공학과</span><span class="en">OO University, Korea</span></div>
+        <div><strong>DX</strong><b>Digital</b><span class="ko">디지털 전환</span><span class="en">Digital transformation</span></div>
+        <div><strong>AX</strong><b>AI</b><span class="ko">AI 전환</span><span class="en">AI transformation</span></div>
+        <div><strong>RX</strong><b>Robotics</b><span class="ko">로봇·Physical AI 기반 전환</span><span class="en">Robotics &amp; physical AI</span></div>
+        <div><strong>X+</strong><b>Emerging &amp; Future</b><span class="ko">데이터 기반 지속가능한 전환</span><span class="en">Data-driven, sustainable transformation</span></div>
       </div>
     </div>
   </div>
@@ -497,23 +415,31 @@ footer small+small{margin-top:4px}
       <span class="eyebrow">The Lab</span>
       <h2><span class="ko">연구실 소개</span><span class="en">About</span></h2>
     </div>
+    <p class="quote"><span class="en">We turn construction data into <em>knowledge</em>, knowledge into <em>intelligence</em>, and intelligence into <em>action</em>.</span><span class="ko">우리는 건설 데이터를 <em>지식</em>으로, 지식을 <em>지능</em>으로, 지능을 <em>실행</em>으로 바꿉니다.</span></p>
     <div class="about">
       <div class="about-text">
-        <p class="ko"><strong>SBI Lab</strong>은 건설 현장과 설계 실무에서 축적된 사람의 지식을 AI가 활용할 수 있는 형태로 구조화하는 연구를 합니다. 지식그래프, 대규모 언어모델(LLM), 비전-언어 모델(VLM)을 BIM과 결합해 설계 검토, 품질관리, 안전관리를 자동화합니다.</p>
-        <p class="ko">OO대학교 건축공학과에 소속되어 건축, 건설공학, 컴퓨터과학의 경계에서 산업계 파트너와 긴밀히 협력하며 연구합니다.</p>
-        <p class="en">The <strong>Smart Built-environment Intelligence (SBI) Lab</strong> at OO University bridges human expertise with artificial intelligence to advance how buildings are designed, constructed, and managed.</p>
-        <p class="en">We develop AI-driven technologies that integrate domain knowledge with state-of-the-art methods, including Large Language Models, Vision-Language Models, and Knowledge Graphs, for design evaluation, quality management, and construction safety.</p>
-        <p class="en">Housed in the Department of Architectural Engineering, the lab works at the intersection of architecture, construction engineering, and computer science, in close collaboration with industry partners.</p>
-        <div class="tags">
-          <span class="tag">BIM · IFC</span><span class="tag">LLM · RAG</span><span class="tag">Knowledge Graph</span><span class="tag">Vision-Language Model</span><span class="tag">Scan-to-BIM</span><span class="tag">Construction Safety</span><span class="tag">Human-AI Collaboration</span>
+        <p class="en"><strong>CMX Lab</strong> transforms heterogeneous construction data into reusable knowledge and purpose-specific AI-ready data. We develop AI agents and cyber-physical systems for design, construction, operation, and maintenance. Our research integrates automation and optimization with data standardization, governance, and real-world validation to turn construction data into knowledge, intelligence, and action.</p>
+        <p class="ko"><strong>CMX Lab</strong>은 이질적인 건설 데이터를 재사용 가능한 지식과 목적별 AI-Ready Data로 전환합니다. 설계·시공·운영·유지관리를 위한 AI 에이전트와 사이버-물리 시스템을 개발하며, 자동화·최적화를 데이터 표준화·거버넌스·현장 실증과 결합하여 건설 데이터를 지식, 지능, 그리고 실행으로 이어지게 합니다.</p>
+        <div class="vision">
+          <small>Vision</small>
+          <b class="en">A reusable and evolving data–knowledge–AI infrastructure for construction transformation</b>
+          <b class="ko">건설산업 전환을 위한, 재사용 가능하고 계속 진화하는 데이터–지식–AI 인프라</b>
         </div>
       </div>
-      <div class="stats">
-        <div><strong>3<sup>+</sup></strong><span class="ko">진행 중인 과제</span><span class="en">Active Projects</span></div>
-        <div><strong>20<sup>+</sup></strong><span class="ko">논문</span><span class="en">Publications</span></div>
-        <div><strong>2026</strong><span class="ko">연구실 설립</span><span class="en">Lab Founded</span></div>
-        <div><strong>OO</strong><span class="ko">OO대학교 · 서울</span><span class="en">OO Univ. · Seoul, Korea</span></div>
-      </div>
+      <aside class="pillars">
+        <h3><span class="en">What we build</span><span class="ko">우리가 하는 일</span></h3>
+        <ul>
+          <li><i>—</i><span class="en">Building AI-Ready Data for Construction Transformation</span><span class="ko">건설 전환을 위한 AI-Ready Data 구축</span></li>
+          <li><i>—</i><span class="en">Connecting Fundamentals, Data, Knowledge, and AI</span><span class="ko">기초이론·데이터·지식·AI의 연결</span></li>
+          <li><i>—</i><span class="en">From Design Data to Construction Action</span><span class="ko">설계 데이터에서 시공 실행까지</span></li>
+          <li><i>—</i><span class="en">Research for Real-World Transformation</span><span class="ko">실제 산업을 바꾸는 연구</span></li>
+        </ul>
+        <p><span class="en">Better AI begins with better data, clearer knowledge, and reliable context.</span><span class="ko">더 나은 AI는 더 나은 데이터, 더 명확한 지식, 신뢰할 수 있는 맥락에서 시작됩니다.</span></p>
+      </aside>
+    </div>
+    <div class="statement">
+      <span class="tag">Our stance</span>
+      <p><span class="en">We do not simply apply AI to construction. We build the data, knowledge, and agentic foundation that makes construction AI reliable, reusable, and actionable.</span><span class="ko">우리는 AI를 건설에 단순히 적용하지 않습니다. 건설 AI가 신뢰할 수 있고, 재사용 가능하며, 실행 가능하도록 만드는 데이터·지식·에이전트 기반을 구축합니다.</span></p>
     </div>
   </div>
 </section>
@@ -524,148 +450,252 @@ footer small+small{margin-top:4px}
     <div class="head">
       <span class="eyebrow">What We Study</span>
       <h2><span class="ko">연구</span><span class="en">Research</span></h2>
-      <p><span class="ko">설계 단계에서 운영 단계까지, 건축물의 생애주기 전반에서 AI가 사람의 판단을 돕는 방법을 연구합니다.</span><span class="en">We develop intelligent systems that combine human knowledge and AI to improve design quality, construction safety, and decision-making across the building lifecycle.</span></p>
+      <p><span class="en">From construction data to knowledge, intelligence, action, and transformation.</span><span class="ko">건설 데이터에서 지식, 지능, 실행, 그리고 산업의 전환까지.</span></p>
     </div>
-    <h3 class="sub-h"><span class="ko">연구 분야</span><span class="en">Research Areas</span></h3>
-    <div class="areas">
-      <article class="area">
-        <span class="code">RA-01</span>
-        <span class="area-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l9-6 9 6v12"/><path d="M3 21h18M9 21v-6h6v6"/></svg></span>
-        <h3><span class="ko">AI 기반 설계 평가</span><span class="en">AI Design Evaluation</span></h3>
-        <p><span class="ko">LLM·VLM으로 설계안을 가이드라인에 비추어 평가하고 근거를 제시합니다.</span><span class="en">Leveraging LLMs and vision-language models to evaluate architectural designs against guidelines with traceable evidence.</span></p>
-        <ul><li>Multi-view BIM rendering</li><li>Agent memory (STM/LTM)</li></ul>
+
+    <div class="sub-h"><h3>Research Flow</h3><p><span class="en">8 stages · one learning loop</span><span class="ko">8단계 · 하나의 학습 루프</span></p></div>
+    <div class="flow-intro">
+      <p class="ko">CMX Lab은 건설산업의 디지털 전환(DX), AI 전환(AX), 로봇·Physical AI 기반 전환(RX)을 연구합니다. 우리는 최신 AI 모델 자체를 연구의 출발점으로 삼지 않습니다. 건설공학의 기초이론, 현장의 문제와 업무프로세스를 분석하고, 이를 해결하기 위해 필요한 정보와 데이터를 먼저 정의합니다.</p>
+      <p class="ko">다양한 건설데이터를 데이터·지식 허브로 연결하고, 연구목적별 AI-Ready Data와 신뢰 가능한 Agentic AI를 구축하여 건설산업의 의사결정과 작업방식을 변화시키는 것이 CMX Lab의 목표입니다.</p>
+      <p class="en">CMX Lab studies the digital (DX), AI (AX), and robotics and physical-AI (RX) transformation of the construction industry. We do not start from the latest AI model. We first analyze construction fundamentals, field problems, and work processes, and define the information and data needed to solve them.</p>
+      <p class="en">Our goal is to connect diverse construction data through a data and knowledge hub, build purpose-specific AI-ready data and reliable agentic AI, and change how the industry makes decisions and gets work done.</p>
+    </div>
+    <div class="flow">
+      <article class="stage">
+        <span class="n">1</span>
+        <h4>Construction Fundamentals &amp; Industry Challenges</h4>
+        <ul><li>Design · Construction · Operations &amp; Maintenance</li><li>Existing information &amp; work processes</li><li>Requirements &amp; decision-making challenges</li></ul>
+        <p class="out">→ Problem definition · Requirements analysis</p>
       </article>
-      <article class="area">
-        <span class="code">RA-02</span>
-        <span class="area-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8.5M16 7.5l-3 8.5M8.5 6h7"/></svg></span>
-        <h3><span class="ko">건설 지식그래프</span><span class="en">Construction Knowledge Graphs</span></h3>
-        <p><span class="ko">기준, 시방, 현장 경험을 그래프로 구조화해 GraphRAG의 기반을 만듭니다.</span><span class="en">Structuring building codes, specifications, and field knowledge into graphs that ground reliable AI reasoning.</span></p>
-        <ul><li>Ontology · IFC mapping</li><li>GraphRAG</li></ul>
+      <article class="stage">
+        <span class="n">2</span>
+        <h4>Digitization &amp; Datafication</h4>
+        <ul><li>Data requirements</li><li>Data structure &amp; schema</li><li>Data collection methods</li><li>Data representation</li></ul>
       </article>
-      <article class="area">
-        <span class="code">RA-03</span>
-        <span class="area-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/><path d="M8 15l3-6 2 4 1-2 2 4"/></svg></span>
-        <h3><span class="ko">Scan-to-BIM 자동화</span><span class="en">Scan-to-BIM Automation</span></h3>
-        <p><span class="ko">포인트 클라우드에서 객체를 인식하고 모델링 판단을 AI 에이전트가 지원합니다.</span><span class="en">Advancing point-cloud-to-BIM workflows with AI agents that support modeling decisions for existing buildings.</span></p>
-        <ul><li>Point cloud segmentation</li><li>As-built verification</li></ul>
+      <article class="stage">
+        <span class="n">3</span>
+        <h4>Construction Data Assets</h4>
+        <ul class="assets"><li>BIM</li><li>Drawings &amp; Docs</li><li>Logs</li><li>Images &amp; Video</li><li>Audio</li><li>Sensors</li><li>Schedule</li><li>Cost</li><li>Logistics</li></ul>
+        <p class="out">→ Multimodal · Heterogeneous data</p>
       </article>
-      <article class="area">
-        <span class="code">RA-04</span>
-        <span class="area-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
-        <h3><span class="ko">건설 안전·품질관리</span><span class="en">Safety & Quality Management</span></h3>
-        <p><span class="ko">하자·사고 보고서를 분석해 위험을 예측하고 관리 우선순위를 제시합니다.</span><span class="en">Developing data-driven systems for defect management, risk assessment, and safer construction sites.</span></p>
-        <ul><li>NLP on site reports</li><li>Risk scoring</li></ul>
+      <article class="stage hub">
+        <span class="n">4</span>
+        <h4>Construction Data &amp; Knowledge Hub</h4>
+        <ul><li>BIM · Semantic integration</li><li>Data hub</li><li>Ontology</li><li>Knowledge graph</li><li>Data governance</li></ul>
+      </article>
+      <article class="stage">
+        <span class="n">5</span>
+        <h4>Purpose-Specific AI-Ready Data</h4>
+        <ul><li>Single-source</li><li>Multi-source / Multimodal fusion</li><li>BIM-linked integration</li><li>Domain-specific</li></ul>
+        <p class="out">→ Training · Retrieval / Context · Evaluation / Benchmark · Agent input</p>
+      </article>
+      <article class="stage">
+        <span class="n">6</span>
+        <h4>AI Intelligence &amp; Agentic Action</h4>
+        <ul class="assets"><li>Prediction</li><li>Generation</li><li>Reasoning</li><li>Planning</li><li>Decision</li><li>Action</li></ul>
+        <p class="out">→ AI agent workflow · Multi-agent orchestration</p>
+      </article>
+      <article class="stage">
+        <span class="n">7</span>
+        <h4>Construction Transformation &amp; Innovation</h4>
+        <ul class="xs"><li><b>DX</b>Digital</li><li><b>AX</b>AI</li><li><b>RX</b>Robotics</li><li><b>X+</b>Emerging &amp; future</li></ul>
+        <p class="out">→ Data-driven sustainable transformation</p>
+      </article>
+    </div>
+    <div class="loop">
+      <span class="n">8</span>
+      <b>Feedback &amp; Learning Loop</b>
+      <span>Outcomes · Errors · Decisions · Actions · Human feedback · New data</span>
+      <svg width="64" height="20" viewBox="0 0 64 20" fill="none" stroke="#00703E" stroke-width="1.6" aria-hidden="true"><path d="M62 10H4M10 4L4 10l6 6"/></svg>
+    </div>
+
+    <div class="sub-h"><h3>Research Fields</h3><p><span class="en">The fields themselves keep transforming — the X in CMX Lab</span><span class="ko">연구분야 자체도 계속 전환됩니다 — CMX Lab의 X</span></p></div>
+    <div class="fields">
+      <article class="fieldc">
+        <span class="code">F1</span>
+        <h4><span class="en">Construction Information &amp; Data Intelligence</span><span class="ko">건설정보·데이터 지능</span></h4>
+        <div class="kw"><span>Data Requirements</span><span>Quality</span><span>Integration</span><span>Ontology / KG</span><span>AI-Ready Data</span><span>Governance</span><span>Benchmark</span></div>
+        <p class="motto"><span class="en">Turning fragmented construction data into reusable knowledge assets</span><span class="ko">파편화된 건설 데이터를 재사용 가능한 지식 자산으로</span></p>
+      </article>
+      <article class="fieldc">
+        <span class="code">F2</span>
+        <h4><span class="en">BIM Design, Evaluation &amp; Automation Intelligence</span><span class="ko">BIM 설계·평가·자동화 지능</span></h4>
+        <div class="kw"><span>BIM Requirements</span><span>Compliance Checking</span><span>VLM Evaluation</span><span>Design Automation</span><span>Design Agent</span></div>
+        <p class="motto">Requirements → Evaluation → Reasoning → Revision → Deliverable Generation</p>
+      </article>
+      <article class="fieldc">
+        <span class="code">F3</span>
+        <h4><span class="en">Construction Site &amp; Delivery Intelligence</span><span class="ko">건설현장·사업수행 지능</span></h4>
+        <div class="kw"><span>Schedule / Cost / Resources</span><span>Logistics</span><span>Quality / Safety</span><span>Multimodal Sensing</span><span>Digital Twin</span><span>Physical AI</span></div>
+        <p class="motto">Observation → Judgment → Evidence → Decision → Action</p>
+      </article>
+      <article class="fieldc">
+        <span class="code">F4</span>
+        <h4><span class="en">Building Operation, Maintenance &amp; Retrofit Intelligence</span><span class="ko">건물 운영·유지관리·리트로핏 지능</span></h4>
+        <div class="kw"><span>BIM–BMS–IoT</span><span>Energy / Carbon</span><span>Predictive Maintenance</span><span>Scan-to-BIM</span><span>Retrofit</span><span>Living BIM</span></div>
+        <p class="motto"><span class="en">Transforming static BIM into a continuously evolving Living BIM</span><span class="ko">정적인 BIM을 계속 진화하는 Living BIM으로</span></p>
       </article>
     </div>
 
-    <h3 class="sub-h"><span class="ko">진행 과제</span><span class="en">Current Projects</span></h3>
+    <div class="sub-h"><h3><span class="en">Core Research Axes</span><span class="ko">핵심 연구 축</span></h3><p>Automation × Standardization</p></div>
+    <div class="axes">
+      <article class="axis">
+        <div class="axis-top"><b>A</b><h4><span class="ko">자동화 / 최적화</span><span class="en">Automation &amp; Optimization</span></h4></div>
+        <ul>
+          <li><span class="ko">AI 에이전트 기반 업무 자동화 워크플로우</span><span class="en">AI agent–based workflow automation</span></li>
+          <li><span class="ko">학습·예측·추론·실행</span><span class="en">Learning · Prediction · Reasoning · Action</span></li>
+          <li><span class="ko">설계·시공·운영 유지관리 자동화</span><span class="en">Automation of design, construction, and O&amp;M</span></li>
+        </ul>
+      </article>
+      <article class="axis">
+        <div class="axis-top"><b>B</b><h4><span class="ko">표준화</span><span class="en">Standardization</span></h4></div>
+        <ul>
+          <li><span class="ko">BIM 요구사항·데이터·성과물·평가 표준</span><span class="en">Standards for BIM requirements, data, deliverables, and evaluation</span></li>
+          <li><span class="ko">건설 데이터 표준 및 거버넌스</span><span class="en">Construction data standards and governance</span></li>
+          <li><span class="ko">지식 표현 (Knowledge Representation)</span><span class="en">Knowledge representation</span></li>
+        </ul>
+      </article>
+      <div class="axis-quote">
+        <p><span class="ko">자동화는 표준화된 데이터 없이 지속될 수 없으며, 표준화는 실제 자동화와 산업 실증을 통해 검증되어야 합니다.</span><span class="en">Automation cannot be sustained without standardized data, and standardization must be validated through real automation and industrial demonstration.</span></p>
+        <small>A ⇄ B</small>
+      </div>
+    </div>
+
+    <div class="sub-h"><h3>Core Technologies</h3><p>Data · AI · Agents · Cyber-Physical</p></div>
+    <div class="tech">
+      <div class="tcol">
+        <h4><i></i>Data &amp; Knowledge Engineering</h4>
+        <p class="sum">BIM · Multimodal Data · Ontology · Knowledge Graph · GraphRAG · Governance</p>
+        <ul><li>Digitization</li><li>Datafication</li><li>Data Engineering</li><li>ETL / ELT</li><li>Data Quality</li><li>Multimodal Data Integration</li><li>BIM / IFC / IDS / bSDD</li><li>Ontology</li><li>Knowledge Graph</li><li>Graph Database</li><li>GraphRAG</li><li>Data Provenance &amp; Lineage</li><li>Federated Data Governance</li><li>AI-Ready Dataset &amp; Benchmark</li></ul>
+      </div>
+      <div class="tcol">
+        <h4><i></i>AI &amp; Reasoning</h4>
+        <p class="sum">ML/DL · RL (PPO) · LLM/VLM/VLA · Neuro-Symbolic AI · World Models</p>
+        <ul><li>Rule-Based Systems</li><li>Machine Learning</li><li>Deep Learning</li><li>Reinforcement Learning</li><li>PPO</li><li>Mathematical Optimization</li><li>Simulation</li><li>LLM</li><li>VLM</li><li>VLA</li><li>Multimodal AI</li><li>Neuro-Symbolic AI</li><li>World Models</li><li>RAG / GraphRAG</li></ul>
+      </div>
+      <div class="tcol">
+        <h4><i></i>Agentic Systems Engineering</h4>
+        <p class="sum">Context Engineering · Agent Memory (STM/LTM) · Harness Engineering · Multi-Agent · HITL</p>
+        <ul><li>Context Engineering</li><li>Agent Memory</li><li class="sub">STM: Short-Term Memory</li><li class="sub">LTM: Long-Term Memory</li><li>Harness Engineering</li><li>Task Decomposition</li><li>Agent Workflow</li><li>Agent Loop</li><li>Reflection &amp; Retry</li><li>Agent Learning</li><li>Multi-Agent Systems</li><li>Agent Graph</li><li>Tool Use / API / MCP</li><li>Human-in-the-loop</li><li>Guardrails</li><li>Evaluation &amp; Traceability</li></ul>
+      </div>
+      <div class="tcol">
+        <h4><i></i>Cyber-Physical Intelligence</h4>
+        <p class="sum">Digital Twin · Construction Robotics · Physical AI · Autonomous Action</p>
+        <ul><li>Digital Twin</li><li>IoT &amp; Sensors</li><li>Real-Time Monitoring</li><li>Construction Robotics</li><li>Autonomous Equipment</li><li>Human–Robot Collaboration</li><li>Physical AI</li><li>VLA-Based Action</li><li>World Model–Based Planning</li><li>Simulation-to-Real Transfer</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS & AWARDS -->
+<section class="s" id="projects">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Funded Research</span>
+      <h2><span class="ko">수행과제 · 수상</span><span class="en">Projects &amp; Awards</span></h2>
+    </div>
+    <div class="sub-h"><h3><span class="en">Research Projects</span><span class="ko">수행과제</span></h3><p><span class="en">Ongoing</span><span class="ko">진행 중</span></p></div>
     <div class="projects">
-      <article class="proj feature">
-        <div class="proj-top"><span class="status st-on"><span class="ko">진행 중</span><span class="en">Ongoing</span></span><span class="yr">2026 – 2028</span></div>
-        <h3><span class="ko">LLM 에이전트 기반 공동주택 설계 자동 검토</span><span class="en">LLM-Agent Design Review for Apartment Complexes</span></h3>
-        <p><span class="ko">단지 배치와 평면을 설계 가이드라인과 대조해 위반 항목과 근거 이미지를 함께 제시하는 검토 에이전트를 개발합니다.</span><span class="en">A review agent that checks site plans and unit layouts against guidelines and returns each violation with its image evidence.</span></p>
-        <p class="fund"><span class="ko">한국연구재단 · 중견연구</span><span class="en">National Research Foundation of Korea</span></p>
+      <article class="proj">
+        <p class="period"><b>2026.08</b>– 2031.07</p>
+        <div><h3><span class="ko">BIM 기반 AX 구현을 위한 데이터 품질 평가·조정·생성 통합 에이전틱 프레임워크 개발</span><span class="en">An integrated agentic framework for BIM data quality assessment, adjustment, and generation toward BIM-based AX</span></h3><p class="fund"><span class="ko">한국연구재단</span><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
+        <span class="role pi"><span class="ko">연구책임자</span><span class="en">Principal Investigator</span></span>
       </article>
       <article class="proj">
-        <div class="proj-top"><span class="status st-on"><span class="ko">아이디어 환영</span><span class="en">Open for Ideas</span></span></div>
-        <h3><span class="ko">당신의 가장 대담한 아이디어를 들려주세요</span><span class="en">Bring Your Boldest Ideas</span></h3>
-        <p><span class="ko">오랫동안 품어온 연구 질문이 있나요? SBI Lab은 대담한 아이디어를 가진 학생, 연구자, 산업계 파트너와 언제든 함께할 준비가 되어 있습니다.</span><span class="en">Have a research question you can't stop thinking about? The SBI Lab welcomes students, collaborators, and industry partners with bold ideas. No idea is too big to explore together.</span></p>
-        <a class="fund more-link" href="#join"><span class="ko">함께 만들어가요 →</span><span class="en">Let's build something together →</span></a>
+        <p class="period"><b>2026.06</b>– 2027.02</p>
+        <div><h3><span class="ko">디지털트윈 기반 건설현장 지능형 레미콘 물류관리 플랫폼</span><span class="en">A digital twin–based intelligent ready-mixed concrete logistics management platform for construction sites</span></h3><p class="fund"><span class="ko">호남대학교 교내과제</span><span class="en">Honam University (internal grant)</span></p></div>
+        <span class="role pi"><span class="ko">연구책임자</span><span class="en">Principal Investigator</span></span>
       </article>
       <article class="proj">
-        <div class="proj-top"><span class="status st-new"><span class="ko">곧 공개</span><span class="en">Coming Soon</span></span></div>
-        <h3><span class="ko">새로운 연구가 준비 중입니다</span><span class="en">Something New Is Taking Shape</span></h3>
-        <p><span class="ko">지식그래프 기반 Scan-to-BIM 의사결정 지원부터 AI 기반 건설 안전 관리까지, 새로운 연구가 조용히 모습을 갖춰가고 있습니다.</span><span class="en">New projects are quietly taking shape, from knowledge-graph support for Scan-to-BIM to AI-driven construction safety. Stay tuned, or help us shape what comes next.</span></p>
-        <a class="fund more-link" href="#publications"><span class="ko">최근 연구 보기 →</span><span class="en">See our recent work →</span></a>
+        <p class="period"><b>2026.05</b>– 2029.02</p>
+        <div><h3><span class="ko">공동주택 운영 및 유지관리 단계의 다차원 정보 교환을 위한 AI-BIM 프레임워크 개발</span><span class="en">An AI-BIM framework for multidimensional information exchange in the operation and maintenance of apartment housing</span></h3><p class="fund"><span class="ko">한국연구재단</span><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
+        <span class="role co"><span class="ko">참여연구원</span><span class="en">Participating Researcher</span></span>
       </article>
+      <article class="proj">
+        <p class="period"><b>2026.03</b>– 2031.02</p>
+        <div><h3><span class="ko">신경-기호적 다중 에이전트를 활용한 공동주택 BIM설계 정합성 평가 지원 프레임워크 개발</span><span class="en">A neuro-symbolic multi-agent framework supporting BIM design consistency evaluation for apartment housing</span></h3><p class="fund"><span class="ko">한국연구재단</span><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
+        <span class="role co"><span class="ko">참여연구원</span><span class="en">Participating Researcher</span></span>
+      </article>
+    </div>
+
+    <div class="sub-h"><h3>Awards</h3><p>2025 – 2026</p></div>
+    <div class="awards">
+      <article class="award"><span class="yr">2025</span><h4><span class="en">Top 20 Outstanding R&amp;D Achievements</span><span class="ko">국가R&amp;D 우수성과 20선</span></h4><p><span class="en">Ministry of Land, Infrastructure and Transport (MOLIT)</span><span class="ko">국토교통부</span></p></article>
+      <article class="award"><span class="yr">2025</span><h4><span class="en">Memorial Award</span><span class="ko">기념상</span></h4><p><span class="en">Korean Institute of BIM (KIBIM)</span><span class="ko">한국BIM학회</span></p></article>
+      <article class="award up"><span class="yr">2026</span><h4><span class="en">Outstanding Paper Award, MOLIT R&amp;D</span><span class="ko">국토교통 R&amp;D 우수논문상</span></h4><p><span class="en">To be presented at MOLIT Innovation Day, late 2026</span><span class="ko">2026년 하반기 국토교통 혁신의 날 시상 예정</span></p></article>
     </div>
   </div>
 </section>
 
 <!-- MEMBERS -->
-<section class="s" id="members">
+<section class="s alt" id="members">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Our Team</span>
       <h2><span class="ko">구성원</span><span class="en">Members</span></h2>
     </div>
-
     <article class="pi">
-      <div class="portrait" aria-hidden="true"><span>GH</span></div>
+      <div class="portrait" aria-hidden="true"><small>LAB DIRECTOR</small><span>YK</span></div>
       <div class="pi-body">
-        <span class="role"><span class="ko">연구실 책임자</span><span class="en">Lab Director</span></span>
-        <h3><span class="ko">홍길동 교수<small>Gildong Hong, Ph.D.</small></span><span class="en">Dr. Gildong Hong<small>Assistant Professor</small></span></h3>
-        <p><span class="ko">OO대학교 건축공학과 조교수. BIM과 AI를 결합한 설계 평가, 건설 지식그래프, 현장 품질·안전관리 자동화를 연구합니다. 대형 건설사 BIM 센터에서 실무를 경험했습니다.</span><span class="en">Dr. Hong is an Assistant Professor in the Department of Architectural Engineering at OO University. His research focuses on AI-driven design evaluation, construction knowledge graphs, and human-AI collaboration for quality and safety management. Before joining academia, he worked at the BIM center of a major general contractor.</span></p>
-        <dl class="edu">
-          <dt>2024</dt><dd><span class="ko">Ph.D. 건축공학, OO대학교</span><span class="en">Ph.D., Architectural Engineering</span></dd>
-          <dt>2019</dt><dd><span class="ko">M.S. 건축공학, OO대학교</span><span class="en">M.S., Architectural Engineering</span></dd>
-          <dt>2016</dt><dd><span class="ko">B.S. 건축공학, OO대학교</span><span class="en">B.S., Architectural Engineering</span></dd>
-        </dl>
+        <span class="role-l"><span class="ko">연구실 책임자</span><span class="en">Lab Director</span></span>
+        <h3><span class="ko">김이제 교수<small>Yije Kim, Ph.D.</small></span><span class="en">Dr. Yije Kim<small>Assistant Professor</small></span></h3>
+        <p class="aff"><span class="ko">호남대학교 건축학부 건축공학전공 조교수</span><span class="en">Architectural Engineering, School of Architecture, Honam University</span></p>
+        <p class="pi-bio"><span class="ko">김이제 교수는 BIM과 AI를 기반으로 설계·시공·유지관리 업무의 자동화·최적화 및 표준화를 연구합니다. 연구성과가 논문과 기술에 머무르지 않고 산업의 실제 업무프로세스, 지침과 표준 및 교육으로 확장되는 연구를 지향합니다.</span><span class="en">Dr. Kim studies the automation, optimization, and standardization of design, construction, and maintenance work based on BIM and AI. He pursues research whose outcomes go beyond papers and technologies to shape real industry workflows, guidelines and standards, and education.</span></p>
+        <div class="cv">
+          <div>
+            <h4><span class="ko">학력</span><span class="en">Education</span></h4>
+            <dl>
+              <dt>Ph.D.</dt><dd><span class="ko">성균관대학교 미래도시융합공학과, 공학박사</span><span class="en">Convergence Engineering for Future City, Sungkyunkwan University</span><small>Smart construction engineering &amp; management</small></dd>
+              <dt>M.S.</dt><dd><span class="ko">성균관대학교 미래도시융합공학과, 공학석사</span><span class="en">Convergence Engineering for Future City, Sungkyunkwan University</span><small>Smart construction engineering &amp; management</small></dd>
+              <dt>B.S.</dt><dd><span class="ko">성균관대학교 건축공학과, 공학사</span><span class="en">Architectural Engineering, Sungkyunkwan University</span></dd>
+            </dl>
+          </div>
+          <div>
+            <h4><span class="ko">주요경력</span><span class="en">Experience</span></h4>
+            <dl>
+              <dt>2025–</dt><dd><span class="ko">호남대학교 건축학부 건축공학전공 조교수</span><span class="en">Assistant Professor, Honam University</span></dd>
+              <dt>2023–25</dt><dd><span class="ko">성균관대학교 건축공학과 연구교수</span><span class="en">Research Professor, Architectural Engineering, Sungkyunkwan University</span></dd>
+              <dt>2022–25</dt><dd><span class="ko">한양대학교 ERICA 스마트융합공학부 건축IT융합전공 강사</span><span class="en">Lecturer, Architectural IT Convergence, Hanyang University ERICA</span></dd>
+              <dt>2024–25</dt><dd><span class="ko">주식회사 아클 공동대표 (교원창업)</span><span class="en">Co-CEO, faculty start-up (주식회사 아클)</span></dd>
+            </dl>
+          </div>
+        </div>
         <div class="links">
-          <a class="lk" href="#contact"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2.5 4.5L8 9l5.5-4.5"/></svg>Email</a>
-          <a class="lk" href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar ↗</a>
-          <a class="lk" href="https://orcid.org" target="_blank" rel="noopener">ORCID ↗</a>
-          <a class="lk" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="lk" href="#contact"><span class="ko">연락하기</span><span class="en">Contact</span></a>
+          <a class="lk" href="https://scholar.google.com/scholar?q=%22Yije+Kim%22+BIM" target="_blank" rel="noopener">Google Scholar ↗</a>
+          <a class="lk" href="#publications"><span class="ko">주요논문</span><span class="en">Publications</span></a>
         </div>
       </div>
     </article>
 
-    <div class="sub-h"><span class="ko">대학원생 · 연구원</span><span class="en">Graduate Students</span></div>
+    <div class="sub-h"><h3><span class="ko">대학원생 · 연구원</span><span class="en">Students &amp; Researchers</span></h3><p><span class="en">Positions open</span><span class="ko">모집 중</span></p></div>
     <div class="people">
-      <div class="person"><div class="avatar g">KM</div><div><h4><span class="ko">김민준</span><span class="en">Minjun Kim</span></h4><div class="pos"><span class="ko">박사과정</span><span class="en">Ph.D. Student</span></div></div><p><span class="ko">건설 지식그래프 · GraphRAG</span><span class="en">Construction KG · GraphRAG</span></p></div>
-      <div class="person"><div class="avatar l">LS</div><div><h4><span class="ko">이서연</span><span class="en">Seoyeon Lee</span></h4><div class="pos"><span class="ko">박사과정</span><span class="en">Ph.D. Student</span></div></div><p><span class="ko">VLM 기반 설계 가이드라인 평가</span><span class="en">VLM-based guideline evaluation</span></p></div>
-      <div class="person"><div class="avatar">PJ</div><div><h4><span class="ko">박지호</span><span class="en">Jiho Park</span></h4><div class="pos"><span class="ko">석사과정</span><span class="en">M.S. Student</span></div></div><p><span class="ko">Scan-to-BIM 포인트 클라우드 분할</span><span class="en">Point cloud segmentation for Scan-to-BIM</span></p></div>
-      <div class="person"><div class="avatar g">CY</div><div><h4><span class="ko">최유진</span><span class="en">Yujin Choi</span></h4><div class="pos"><span class="ko">석사과정</span><span class="en">M.S. Student</span></div></div><p><span class="ko">LLM 에이전트 메모리 구조</span><span class="en">Memory architectures for LLM agents</span></p></div>
-      <div class="person"><div class="avatar l">JH</div><div><h4><span class="ko">정하늘</span><span class="en">Haneul Jung</span></h4><div class="pos"><span class="ko">학부연구생</span><span class="en">Undergraduate Researcher</span></div></div><p><span class="ko">현장 안전 보고서 NLP</span><span class="en">NLP on site safety reports</span></p></div>
-      <div class="person open"><div class="avatar">+</div><div><h4><span class="ko">박사과정</span><span class="en">Ph.D. Student</span></h4><div class="pos"><span class="ko">모집 중</span><span class="en">Position Open</span></div></div><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
-      <div class="person open"><div class="avatar">+</div><div><h4><span class="ko">석사과정</span><span class="en">M.S. Student</span></h4><div class="pos"><span class="ko">모집 중</span><span class="en">Position Open</span></div></div><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
-      <div class="person open"><div class="avatar">+</div><div><h4><span class="ko">학부연구생</span><span class="en">Undergraduate Researcher</span></h4><div class="pos"><span class="ko">상시 모집</span><span class="en">Position Open</span></div></div><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
+      <div class="person"><span class="av">+</span><h4><span class="ko">대학원생</span><span class="en">Graduate Students</span></h4><p><span class="ko">석사·박사 과정</span><span class="en">M.S. and Ph.D. programs</span></p><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
+      <div class="person"><span class="av">+</span><h4><span class="ko">학부연구생</span><span class="en">Undergraduate Researchers</span></h4><p><span class="ko">AI 경험이 없어도 괜찮습니다</span><span class="en">No prior AI experience required</span></p><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
+      <div class="person"><span class="av">+</span><h4><span class="ko">인턴 연구원</span><span class="en">Research Interns</span></h4><p><span class="ko">연구 프로젝트 참여</span><span class="en">Join an ongoing project</span></p><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
     </div>
   </div>
 </section>
 
 <!-- PUBLICATIONS -->
-<section class="s alt" id="publications">
+<section class="s" id="publications">
   <div class="wrap">
     <div class="head-row">
       <div class="head">
         <span class="eyebrow">Selected Work</span>
-        <h2><span class="ko">논문</span><span class="en">Publications</span></h2>
+        <h2><span class="ko">주요논문</span><span class="en">Publications</span></h2>
       </div>
       <div class="seg" role="tablist" aria-label="Publication type">
         <button type="button" role="tab" id="tab-all" data-f="all" aria-selected="true"><span class="ko">전체</span><span class="en">All</span> <span id="n-all"></span></button>
-        <button type="button" role="tab" id="tab-j" data-f="j" aria-selected="false"><span class="ko">저널</span><span class="en">Journal</span> <span id="n-j"></span></button>
-        <button type="button" role="tab" id="tab-c" data-f="c" aria-selected="false"><span class="ko">학술대회</span><span class="en">Conference</span> <span id="n-c"></span></button>
+        <button type="button" role="tab" id="tab-j" data-f="j" aria-selected="false"><span class="ko">국제학술지</span><span class="en">International</span> <span id="n-j"></span></button>
+        <button type="button" role="tab" id="tab-d" data-f="d" aria-selected="false"><span class="ko">국내학술지</span><span class="en">Domestic</span> <span id="n-d"></span></button>
+        <button type="button" role="tab" id="tab-a" data-f="a" aria-selected="false"><span class="ko">기고</span><span class="en">Articles</span> <span id="n-a"></span></button>
       </div>
     </div>
     <div class="pubs" id="pubs"></div>
     <div class="more">
       <button class="btn-line" type="button" id="more"></button>
-      <a class="btn-line" href="https://scholar.google.com" target="_blank" rel="noopener"><span class="ko">Google Scholar에서 전체 보기 ↗</span><span class="en">View All on Google Scholar ↗</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- TEACHING -->
-<section class="s" id="teaching">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Courses</span>
-      <h2><span class="ko">강의</span><span class="en">Teaching</span></h2>
-    </div>
-    <div class="courses">
-      <article class="course">
-        <div class="cc"><span class="num">ARE 341</span><span class="term"><span class="ko">2026 봄 · 가을</span><span class="en">Spring · Fall 2026</span></span></div>
-        <h3><span class="ko">BIM 개론</span><span class="en">Introduction to Building Information Modeling</span></h3>
-        <p><span class="ko">Revit과 IFC를 활용한 모델 작성부터 간섭 검토, 물량 산출, 4D 시뮬레이션까지 BIM 실무 전 과정을 프로젝트 기반으로 다룹니다.</span><span class="en">A project-based course covering modeling in Revit and IFC, clash detection, quantity take-off, and 4D simulation.</span></p>
-        <div class="rate"><strong>4.8</strong>/ 5.0 <span class="ko">강의평가</span><span class="en">course rating</span></div>
-      </article>
-      <article class="course">
-        <div class="cc"><span class="num">ARE 552</span><span class="term"><span class="ko">2026 가을 · 대학원</span><span class="en">Fall 2026 · Graduate</span></span></div>
-        <h3><span class="ko">건설 데이터 사이언스와 AI</span><span class="en">Data Science & AI for Construction</span></h3>
-        <p><span class="ko">건설 문서와 BIM 데이터를 대상으로 NLP, 지식그래프, LLM 활용법을 실습하고 팀 프로젝트로 실제 문제를 해결합니다.</span><span class="en">Hands-on NLP, knowledge graphs, and LLMs on construction documents and BIM data, ending in a team project on a real problem.</span></p>
-        <div class="rate"><strong>4.9</strong>/ 5.0 <span class="ko">강의평가</span><span class="en">course rating</span></div>
-      </article>
+      <a class="btn-line" href="https://scholar.google.com/scholar?q=%22Yije+Kim%22+BIM" target="_blank" rel="noopener"><span class="ko">Google Scholar에서 보기 ↗</span><span class="en">View on Google Scholar ↗</span></a>
     </div>
   </div>
 </section>
@@ -675,44 +705,42 @@ footer small+small{margin-top:4px}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Opportunities</span>
-      <h2><span class="ko">함께할 연구자를 찾습니다</span><span class="en">Join Our Lab</span></h2>
-      <p><span class="ko">스마트 건설환경의 미래를 함께 만들어갈 열정 있는 연구자를 찾습니다. 건축·건설과 AI 중 어느 쪽에서 출발해도 좋습니다.</span><span class="en">We are looking for passionate researchers to help shape the future of intelligent built environments. Whether your roots are in construction or in AI, there is a place for you here.</span></p>
+      <h2>Join CMX Lab</h2>
+    </div>
+    <div class="join-top">
+      <div class="join-lead">
+        <p><span class="ko">CMX Lab은 건설산업의 실제 문제를 데이터와 AI로 해결하고 싶은 학생과 연구자를 찾습니다.</span><span class="en">CMX Lab is looking for students and researchers who want to solve real problems in the construction industry with data and AI.</span></p>
+        <p><span class="ko">AI 경험이 없어도 괜찮습니다. 중요한 것은 건설산업에 대한 관심, 문제를 발견하는 태도와 지속적으로 배우고 실행하려는 의지입니다.</span><span class="en">No prior AI experience is needed. What matters is an interest in the construction industry, an eye for finding problems, and the will to keep learning and putting ideas into action.</span></p>
+      </div>
+      <div class="path">
+        <h4><span class="ko">학생 성장경로</span><span class="en">Student Growth Path</span></h4>
+        <ol>
+          <li>Course Project</li>
+          <li>Undergraduate Researcher</li>
+          <li>Graduate Research</li>
+          <li>Paper · Conference · Patent · Software</li>
+          <li>Industry &amp; International Collaboration</li>
+          <li>Career · Start-up · Ph.D.</li>
+        </ol>
+      </div>
     </div>
     <div class="tracks">
-      <div class="track">
-        <span class="k">Ph.D.</span>
-        <h3><span class="ko">박사과정</span><span class="en">Ph.D. Students</span></h3>
-        <p><span class="ko">AI와 건설 기술에 관심 있는 자기주도적인 박사과정 지원자를 찾습니다.</span><span class="en">We seek self-motivated doctoral candidates with a strong interest in AI and construction technology.</span></p>
-        <ul>
-          <li><span class="ko">우수 지원자 전액 장학 및 연구비 지원</span><span class="en">Full funding available for qualified candidates</span></li>
-          <li><span class="ko">NLP, ML, BIM 경험자 우대</span><span class="en">Background in NLP, ML, or BIM is a plus</span></li>
-          <li><span class="ko">국제 학술대회 발표 기회</span><span class="en">Opportunities to present at international venues</span></li>
-        </ul>
-      </div>
-      <div class="track">
-        <span class="k">M.S. · Postdoc</span>
-        <h3><span class="ko">석사과정 · 박사후연구원</span><span class="en">M.S. Students & Postdocs</span></h3>
-        <p><span class="ko">지능형 설계 평가, 인간-AI 협업, 데이터 기반 건설관리에 관심 있는 분을 환영합니다.</span><span class="en">We welcome those interested in intelligent design evaluation, human-AI collaboration, and data-driven construction management.</span></p>
-        <ul>
-          <li><span class="ko">연구 및 학위논문 기회</span><span class="en">Research and thesis opportunities available</span></li>
-          <li><span class="ko">학제 간 협업 장려</span><span class="en">Interdisciplinary collaboration encouraged</span></li>
-          <li><span class="ko">산업계 네트워크와 진로 멘토링</span><span class="en">Industry connections and career mentorship</span></li>
-        </ul>
-      </div>
-      <div class="track">
-        <span class="k">Undergraduate</span>
-        <h3><span class="ko">학부연구생</span><span class="en">Undergraduate Researchers</span></h3>
-        <p><span class="ko">AI, 데이터 사이언스, 건축공학에 관심 있다면 언제든 연락 주세요. 연구 경험은 필요 없습니다.</span><span class="en">Curious about AI, data science, or architectural engineering? Reach out — no prior research experience required.</span></p>
-        <ul>
-          <li><span class="ko">실제 연구 프로젝트 참여</span><span class="en">Hands-on research experience</span></li>
-          <li><span class="ko">최신 AI 도구 활용 경험</span><span class="en">Exposure to cutting-edge AI tools</span></li>
-          <li><span class="ko">대학원생·교수 멘토링</span><span class="en">Mentorship from graduate students and faculty</span></li>
-        </ul>
-      </div>
+      <article class="track">
+        <span class="k">For Students</span>
+        <h3>Student Opportunities</h3>
+        <p><span class="ko">대학원 진학, 학부연구생 및 인턴 연구 참여에 관심이 있는 학생은 CV와 관심 연구분야를 보내주시기 바랍니다.</span><span class="en">Students interested in graduate study, undergraduate research, or research internships are welcome to send a CV and their research interests.</span></p>
+        <ul><li><span class="ko">대학원 진학</span><span class="en">Graduate study</span></li><li><span class="ko">학부연구생</span><span class="en">Undergraduate research</span></li><li><span class="ko">인턴 연구</span><span class="en">Research internship</span></li></ul>
+      </article>
+      <article class="track">
+        <span class="k">For Partners</span>
+        <h3>Research Collaboration</h3>
+        <p><span class="ko">공동연구, 데이터·현장실증, 산학협력 및 기술이전에 관한 문의를 환영합니다. CMX Lab은 대학·공공기관·기업과 함께 건설산업의 문제를 정의하고 데이터 기반 해결방안을 개발합니다.</span><span class="en">We welcome inquiries about joint research, data and field validation, industry–academia partnerships, and technology transfer. CMX Lab works with universities, public agencies, and companies to define construction problems and develop data-driven solutions.</span></p>
+        <blockquote>Each partner retains its expertise and data ownership, while CMX Lab provides a shared foundation for connecting, validating, and reusing data and knowledge.</blockquote>
+      </article>
     </div>
     <div class="apply">
-      <p><span class="ko"><strong>지원 방법</strong> · CV와 관심 연구 분야를 담은 간단한 소개서를 연구실 이메일로 보내주세요.</span><span class="en"><strong>Interested?</strong> Send your CV and a brief statement of research interests to the lab email. We'd love to hear from you.</span></p>
-      <a class="btn btn-w" href="#contact"><span class="ko">연락하기</span><span class="en">Get in Touch</span>
+      <p><span class="ko"><strong>지원·문의</strong> · CV와 관심 연구분야를 연구실로 보내주세요.</span><span class="en"><strong>Interested?</strong> Send your CV and research interests to the lab. We'd love to hear from you.</span></p>
+      <a class="btn" href="#contact"><span class="ko">연락처 보기</span><span class="en">Get in Touch</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
@@ -727,30 +755,19 @@ footer small+small{margin-top:4px}
     </div>
     <div class="contact">
       <dl>
-        <div><dt>Email</dt><dd><span id="mail">sbilab@university.ac.kr</span><button class="copy" type="button" id="copy-mail" data-copy="sbilab@university.ac.kr">Copy</button></dd></div>
-        <div><dt>Office</dt><dd><span class="ko">공학관 A동 512호</span><span class="en">Engineering Bldg. A, Room 512</span></dd></div>
-        <div><dt><span class="ko">주소</span><span class="en">Address</span></dt><dd><span class="ko">서울특별시 OO구 OO로 120, OO대학교</span><span class="en">120 OO-ro, OO-gu, Seoul, Republic of Korea</span></dd></div>
-        <div><dt><span class="ko">소속</span><span class="en">Department</span></dt><dd><span class="ko">공과대학 건축공학과</span><span class="en">Dept. of Architectural Engineering, College of Engineering</span></dd></div>
-        <div><dt>Links</dt><dd class="links"><a class="lk" href="https://github.com" target="_blank" rel="noopener">GitHub ↗</a><a class="lk" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a><a class="lk" href="https://scholar.google.com" target="_blank" rel="noopener">Scholar ↗</a></dd></div>
+        <div><dt>Email</dt><dd><span class="pending"><span class="ko">추후 안내</span><span class="en">Coming soon</span></span></dd></div>
+        <div><dt><span class="ko">소속</span><span class="en">Department</span></dt><dd><span class="ko">호남대학교 건축학부 건축공학전공</span><span class="en">Architectural Engineering, School of Architecture</span><small>Honam University</small></dd></div>
+        <div><dt><span class="ko">위치</span><span class="en">Location</span></dt><dd><span class="ko">광주광역시 광산구, 호남대학교</span><span class="en">Honam University, Gwangsan-gu, Gwangju, Republic of Korea</span></dd></div>
+        <div><dt><span class="ko">책임자</span><span class="en">Director</span></dt><dd><span class="ko">김이제 교수</span><span class="en">Prof. Yije Kim</span></dd></div>
       </dl>
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice">
-          <g stroke="var(--line)" stroke-width="1" fill="none">
-            <path d="M0 80h400M0 170h400M0 255h400M70 0v320M190 0v320M300 0v320"/>
-          </g>
-          <g stroke="var(--fg-3)" stroke-width="10" stroke-opacity=".18" fill="none" stroke-linecap="round">
-            <path d="M-10 210 C 90 190, 160 120, 410 110"/>
-            <path d="M120 -10 L 260 330"/>
-          </g>
-          <g fill="var(--card)" stroke="var(--line)">
-            <rect x="200" y="120" width="70" height="36" rx="4"/>
-            <rect x="85" y="95" width="80" height="50" rx="4"/>
-            <rect x="310" y="190" width="70" height="50" rx="4"/>
-            <rect x="80" y="190" width="90" height="45" rx="4"/>
-          </g>
-          <rect x="215" y="160" width="55" height="40" rx="4" fill="var(--green-soft)" stroke="var(--green)"/>
+          <g stroke="#E1E8E4" stroke-width="1" fill="none"><path d="M0 80h400M0 170h400M0 255h400M70 0v320M190 0v320M300 0v320"/></g>
+          <g stroke="#7C847F" stroke-width="10" stroke-opacity=".16" fill="none" stroke-linecap="round"><path d="M-10 210 C 90 190, 160 120, 410 110"/><path d="M120 -10 L 260 330"/></g>
+          <g fill="#FFFFFF" stroke="#CFE3D7"><rect x="200" y="120" width="70" height="36" rx="4"/><rect x="85" y="95" width="80" height="50" rx="4"/><rect x="310" y="190" width="70" height="50" rx="4"/><rect x="80" y="190" width="90" height="45" rx="4"/></g>
+          <rect x="205" y="168" width="60" height="40" rx="4" fill="#E8F3ED" stroke="#00703E"/>
         </svg>
-        <div class="pin"><b><span class="ko">공학관 A동</span><span class="en">Engineering Bldg. A</span></b><i></i></div>
+        <div class="pin"><b><span class="ko">호남대학교 · CMX Lab</span><span class="en">Honam University · CMX Lab</span></b><i></i></div>
       </div>
     </div>
   </div>
@@ -760,17 +777,15 @@ footer small+small{margin-top:4px}
 <footer>
   <div class="wrap">
     <div>
-      <a class="brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6"><path d="M2 14V6l6-4 6 4v8"/><path d="M6 14V9h4v5"/></svg></span><span>SBI <b>Lab</b></span></a>
-      <small>Smart Built-environment Intelligence Laboratory · OO University · Seoul, Korea</small><small>© 2026 SBI Lab · OO University. All rights reserved.</small>
+      <a class="brand" href="#top"><span class="brand-mark">CX</span><span>CMX <b>Lab</b></span></a>
+      <small>Construction Management Transformation Laboratory · Honam University · Gwangju, Korea</small>
+      <small>© 2026 CMX Lab. All rights reserved.</small>
     </div>
     <nav aria-label="Footer">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#members">Members</a><a href="#publications">Publications</a><a href="#join">Join</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#members">Members</a><a href="#publications">Publications</a><a href="#join">Join</a><a href="#contact">Contact</a>
     </nav>
   </div>
 </footer>
-
-<div class="sample"><span class="ko">샘플 콘텐츠</span><span class="en">Sample content</span></div>
-<div class="toast" id="toast" role="status"></div>
 
 <script>
 (function(){
@@ -779,7 +794,7 @@ footer small+small{margin-top:4px}
   function setLang(l){
     root.setAttribute('data-lang',l);root.lang=l;
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
-    try{localStorage.setItem('sbi-lang',l)}catch(e){}
+    try{localStorage.setItem('cmx-lang',l)}catch(e){}
     renderPubs();
   }
   document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
@@ -796,7 +811,7 @@ footer small+small{margin-top:4px}
     document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s)});
   }
 
-  /* ---------- hero field: point cloud resolving into a structural lattice ---------- */
+  /* ---------- hero field: scattered data resolving into structure, then knowledge ---------- */
   (function(){
     var cv=document.getElementById('field');if(!cv||!cv.getContext)return;
     var ctx=cv.getContext('2d'),W=0,H=0,dpr=1;
@@ -806,7 +821,7 @@ footer small+small{margin-top:4px}
     for(var x=0;x<NX;x++)for(var y=0;y<NY;y++)for(var z=0;z<NZ;z++){
       [[1,0,0],[0,1,0],[0,0,1]].forEach(function(d){
         var x2=x+d[0],y2=y+d[1],z2=z+d[2];if(x2>=NX||y2>=NY||z2>=NZ)return;
-        if(d[2]===1 && (x%2===1) && y>0 && y<NY-1)return; /* thin out some beams */
+        if(d[2]===1 && (x%2===1) && y>0 && y<NY-1)return;
         edges.push([x,y,z,x2,y2,z2]);
         for(var k=0;k<S;k++){var t=k/S;pts.push({b:[x+d[0]*t,y+d[1]*t,z+d[2]*t],n:[gauss()*.42,gauss()*.42,gauss()*.42],a:.25+Math.random()*.55})}
       });
@@ -826,15 +841,13 @@ footer small+small{margin-top:4px}
     function draw(time){
       ctx.clearRect(0,0,W,H);
       var T=time/1000,yaw=-.62+Math.sin(T*.12)*.22;
-      var ph=(T*.06)%2,tri=ph<1?ph:2-ph;tri=tri*tri*(3-2*tri);var sweep=-2.5+tri*(NX+4.5); /* resolve front moves across, then back */
-      /* lattice edges behind the front */
+      var ph=(T*.06)%2,tri=ph<1?ph:2-ph;tri=tri*tri*(3-2*tri);var sweep=-2.5+tri*(NX+4.5);
       ctx.lineWidth=1;
       edges.forEach(function(e){
         var r=smooth(sweep,sweep-1.6,Math.max(e[0],e[3]));if(r<.02)return;
         var a=proj([e[0],e[1],e[2]],yaw),b=proj([e[3],e[4],e[5]],yaw);
         ctx.strokeStyle='rgba(0,112,62,'+(.38*r)+')';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();
       });
-      /* points */
       pts.forEach(function(p){
         var r=p.stray?0:smooth(sweep+.3,sweep-1.2,p.b[0]);
         if(p.stray){var fade=1-smooth(sweep+1,sweep-2,p.b[0]);if(fade<.02)return}
@@ -843,7 +856,6 @@ footer small+small{margin-top:4px}
         ctx.fillStyle=r>.5?'rgba(0,112,62,'+al+')':'rgba(60,78,70,'+al*.7+')';
         var sz=(r>.5?1.6:1.3)*v[2];ctx.fillRect(v[0]-sz/2,v[1]-sz/2,sz,sz);
       });
-      /* knowledge graph: nodes + arcs once structure is resolved */
       var g=smooth(2,6.5,sweep);
       if(g>.02){
         links.forEach(function(l){
@@ -857,42 +869,49 @@ footer small+small{margin-top:4px}
           if(i===1){ctx.fillStyle='rgba(0,112,62,'+g+')';ctx.beginPath();ctx.arc(v[0],v[1],2.5,0,7);ctx.fill()}
         });
       }
-      /* sweep plane */
       var s0=proj([sweep,-.4,-.4],yaw),s1=proj([sweep,NY-.6,-.4],yaw),s2=proj([sweep,NY-.6,NZ-.6],yaw),s3=proj([sweep,-.4,NZ-.6],yaw);
       if(sweep>-1&&sweep<NX){
         ctx.fillStyle='rgba(0,168,90,.06)';ctx.strokeStyle='rgba(0,112,62,.35)';ctx.lineWidth=1;
         ctx.beginPath();ctx.moveTo(s0[0],s0[1]);ctx.lineTo(s1[0],s1[1]);ctx.lineTo(s2[0],s2[1]);ctx.lineTo(s3[0],s3[1]);ctx.closePath();ctx.fill();ctx.stroke();
       }
     }
-    size();window.addEventListener('resize',function(){size();if(still)draw(STILL)});
     var still=matchMedia('(prefers-reduced-motion: reduce)').matches,STILL=11000;
+    size();window.addEventListener('resize',function(){size();if(still)draw(STILL)});
     draw(STILL);
     if(!still){var t0=performance.now()-STILL;(function loop(now){draw(now-t0);requestAnimationFrame(loop)})(t0+STILL)}
   })();
 
   /* ---------- publications ---------- */
+  /* t: j = international journal, d = domestic journal, a = article; r: author role */
   var P=[
-    {t:'j',y:2026,ti:'Retrieval-augmented LLM agents with long-term memory for automated apartment design review',au:'Kim M., Choi Y., <b>Hong G.</b>',ve:'Automation in Construction, 172, 105901',kw:['LLM','Agent Memory','Design Review']},
-    {t:'j',y:2026,ti:'Evaluating architectural design guidelines from multi-view BIM renderings using vision-language models',au:'Lee S., <b>Hong G.</b>',ve:'Advanced Engineering Informatics, 64, 103112',kw:['VLM','BIM','Guidelines']},
-    {t:'j',y:2025,ti:'A construction knowledge graph for decision support in Scan-to-BIM modeling of existing buildings',au:'Park J., Kim M., <b>Hong G.</b>',ve:'Journal of Computing in Civil Engineering, 39(4)',kw:['Knowledge Graph','Scan-to-BIM']},
-    {t:'c',y:2026,ti:'GraphRAG over building codes: grounding LLM answers in clause-level evidence',au:'Kim M., <b>Hong G.</b>',ve:'Proc. ASCE i3CE 2026',kw:['GraphRAG','Building Codes']},
-    {t:'j',y:2024,ti:'Named entity recognition for construction defect reports using domain-adapted transformers',au:'<b>Hong G.</b>, et al.',ve:'Journal of Construction Engineering and Management, 150(9)',kw:['NER','Defect Management']},
-    {t:'c',y:2025,ti:'Short- and long-term memory design for LLM-based design evaluation agents',au:'Choi Y., Lee S., <b>Hong G.</b>',ve:'Proc. ISARC 2025',kw:['LLM','Memory']},
-    {t:'c',y:2025,ti:'Point cloud segmentation of MEP elements for as-built verification',au:'Park J., <b>Hong G.</b>',ve:'Proc. CONVR 2025',kw:['Point Cloud','MEP']},
-    {t:'j',y:2023,ti:'Text classification of construction safety incident reports with hierarchical labels',au:'<b>Hong G.</b>, et al.',ve:'Safety Science, 162, 106098',kw:['NLP','Safety']},
-    {t:'c',y:2024,ti:'IDM-based information requirements for AI-assisted quality inspection',au:'<b>Hong G.</b>, Jung H.',ve:'Proc. ICCCBE 2024',kw:['IDM','Quality']},
-    {t:'c',y:2023,ti:'Toward human-AI collaboration in BIM coordination meetings',au:'<b>Hong G.</b>',ve:'Proc. CIB W78 2023',kw:['Human-AI','BIM']}
+    {t:'j',y:2026,ti:'From pouring-duration prediction to dispatch optimization: site-oriented decision-support framework for ready-mixed concrete',au:'<b>Kim, Y.</b>, &amp; Park, I.',ve:'Automation in Construction, 192, 107212',r:['first','corr']},
+    {t:'j',y:2026,ti:'BIM–LLM integration in AECO workflows: Applications, validation, and future directions',au:'Park, I., <b>Kim, Y.</b>, Kim, K., &amp; Chin, S.',ve:'Automation in Construction, 187, 106905',r:['corr']},
+    {t:'j',y:2026,ti:'BIM-LogNet clustering for automated design and drawing productivity measurement',au:'<b>Kim, Y.</b>, Lee, G., Park, I., &amp; Chin, S.',ve:'Advanced Engineering Informatics, 71, 104279',r:['first']},
+    {t:'j',y:2025,ti:'Optimizing BIM drawing element placement through reinforcement learning',au:'<b>Kim, Y.</b>, Park, J., Oh, J., Bum, J., &amp; Chin, S.',ve:'Automation in Construction, 175, 106242',r:['first']},
+    {t:'j',y:2024,ti:'Rule-based automation algorithm for generating 2D deliverables from BIM',au:'<b>Kim, Y.</b>, Chin, S., &amp; Choo, S.',ve:'Journal of Building Engineering, 97, 111033',r:['first']},
+    {t:'j',y:2023,ti:'Quantitative Evaluation Method and Process of BIM Data for Generating BIM-Based 2D Deliverables',au:'<b>Kim, Y.</b>, Chin, S., &amp; Choo, S.',ve:'Buildings, 13(12), 3124',r:['first']},
+    {t:'j',y:2023,ti:'Deep-learning-based sound classification model for concrete pouring work monitoring at a construction site',au:'Kim, I., <b>Kim, Y.</b>, &amp; Chin, S.',ve:'Applied Sciences, 13(8), 4789',r:['co']},
+    {t:'d',y:2023,ti:'유전자 알고리즘을 활용한 BIM 도면 주석 간섭 조정 기술 개발',au:'전진규, 박재호, <b>김이제</b>, &amp; 진상윤',ve:'KIBIM Magazine, 13(3), 85–95',r:['corr']},
+    {t:'j',y:2022,ti:'BIM data requirements for 2D deliverables in construction documentation',au:'<b>Kim, Y.</b>, Chin, S., &amp; Choo, S.',ve:'Automation in Construction, 140, 104340',r:['first']},
+    {t:'j',y:2022,ti:'Sound localization framework for construction site monitoring',au:'Kim, I. C., <b>Kim, Y. J.</b>, &amp; Chin, S. Y.',ve:'Applied Sciences, 12(21), 10783',r:['co']},
+    {t:'j',y:2022,ti:'Automatic stereo vision-based inspection system for particle shape analysis of coarse aggregates',au:'Tuan, N. M., <b>Kim, Y.</b>, Lee, J. Y., &amp; Chin, S.',ve:'Journal of Computing in Civil Engineering, 36(2), 04021034',r:['co']},
+    {t:'d',y:2020,ti:'실시설계단계 BIM 기반 도면 작업 효율 향상을 위한 도면화 템플릿 개발',au:'<b>김이제</b>, 김인채, &amp; 진상윤',ve:'KIBIM Magazine, 10(4), 98–109',r:['first']},
+    {t:'d',y:2020,ti:'국내 MEP 분야 BIM 활용 실태 조사 및 실무 적용 활성화 방안 제시',au:'<b>김이제</b>, 김용인, 김인채, &amp; 진상윤',ve:'KIBIM Magazine, 10(4), 70–80',r:['first']},
+    {t:'d',y:2019,ti:'BIM의 효율적 활용을 위한 전문협력업체 조기참여 필요성과 적용 방안',au:'<b>김이제</b>, &amp; 진상윤',ve:'한국 CDE 학회 논문집, 24(1), 19–29',r:['first']},
+    {t:'a',y:2025,ti:'BIM 설계 프로세스 혁신을 통한 건설산업 디지털 전환',au:'<b>김이제</b>, &amp; 진상윤',ve:'KIBIM Magazine, 15(2), 48–52',r:[]},
+    {t:'a',y:2019,ti:'설계 BIM과 시공 BIM',au:'진상윤, &amp; <b>김이제</b>',ve:'건축, 63(6), 52–55',r:[]}
   ];
-  P.sort(function(a,b){return b.y-a.y});
-  var filt='all',expanded=false,LIMIT=6,box=document.getElementById('pubs'),moreBtn=document.getElementById('more');
-  document.getElementById('n-all').textContent=P.length;
-  document.getElementById('n-j').textContent=P.filter(function(p){return p.t==='j'}).length;
-  document.getElementById('n-c').textContent=P.filter(function(p){return p.t==='c'}).length;
+  var RL={first:['First author','제1저자'],corr:['Corresponding','교신저자'],co:['Co-author','공동저자']};
+  var TL={j:['International journal','국제학술지'],d:['Domestic journal','국내학술지'],a:['Article','기고']};
+  var filt='all',expanded=false,LIMIT=8,box=document.getElementById('pubs'),moreBtn=document.getElementById('more');
+  ['all','j','d','a'].forEach(function(k){document.getElementById('n-'+k).textContent=P.filter(function(p){return k==='all'||p.t===k}).length});
   function renderPubs(){
-    var en=root.getAttribute('data-lang')==='en';
+    var en=root.getAttribute('data-lang')==='en',li=en?0:1;
     var list=P.filter(function(p){return filt==='all'||p.t===filt});
     box.innerHTML=list.map(function(p,i){
-      return '<article class="pub'+(!expanded&&i>=LIMIT?' hide':'')+'"><div class="y">'+p.y+'</div><div class="pub-body"><h3>'+p.ti+'</h3><div class="au">'+p.au+'</div><div class="ve">'+p.ve+'</div><div class="kw">'+p.kw.map(function(k){return '<span>'+k+'</span>'}).join('')+'</div></div><a class="doi" href="https://doi.org" target="_blank" rel="noopener">DOI ↗</a></article>';
+      var tags='<span class="t">'+TL[p.t][li]+'</span>'+p.r.map(function(r){return '<span>'+RL[r][li]+'</span>'}).join('');
+      var q='https://scholar.google.com/scholar?q='+encodeURIComponent(p.ti);
+      return '<article class="pub'+(!expanded&&i>=LIMIT?' hide':'')+'"><div class="y">'+p.y+'</div><div class="pub-body"><h3>'+p.ti+'</h3><div class="au">'+p.au+'</div><div class="ve">'+p.ve+'</div><div class="tags">'+tags+'</div></div><a class="go" href="'+q+'" target="_blank" rel="noopener">'+(en?'Find':'찾기')+' ↗</a></article>';
     }).join('');
     var hidden=Math.max(0,list.length-LIMIT);
     moreBtn.hidden=hidden===0;
@@ -905,17 +924,7 @@ footer small+small{margin-top:4px}
     renderPubs();
   })});
 
-  /* ---------- copy ---------- */
-  var toast=document.getElementById('toast'),tt;
-  function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},1600)}
-  document.getElementById('copy-mail').addEventListener('click',function(){
-    var v=this.dataset.copy,en=root.getAttribute('data-lang')==='en';
-    var ok=function(){say(en?'Email copied':'이메일을 복사했습니다')};
-    var fb=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);say(en?'Selected — press Ctrl+C':'선택됨 — Ctrl+C로 복사하세요')};
-    try{navigator.clipboard.writeText(v).then(ok,fb)}catch(e){fb()}
-  });
-
-  var saved=null;try{saved=localStorage.getItem('sbi-lang')}catch(e){}
+  var saved=null;try{saved=localStorage.getItem('cmx-lang')}catch(e){}
   setLang(saved==='ko'?'ko':'en');
 })();
 </script>
