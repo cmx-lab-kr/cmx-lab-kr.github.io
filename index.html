@@ -355,8 +355,9 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
 
 /* slide-5 flow image */
 .flowimg{margin:0 0 36px;display:grid;gap:14px}
-.flow-scroll{display:block;overflow-x:auto;border:1px solid var(--line-g);border-radius:var(--r);background:#fff;padding:18px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
-.flow-scroll picture,.flow-scroll img{display:block;width:100%;height:auto;min-width:860px;max-width:none}
+.flow-scroll{display:block;overflow:hidden;border:1px solid var(--line-g);border-radius:var(--r);background:#fff;padding:18px;box-shadow:var(--shadow);-webkit-overflow-scrolling:touch}
+.flow-scroll picture,.flow-scroll img{display:block;width:100%;height:auto;max-width:100%}
+@media (max-width:640px){.flow-scroll{padding:8px}}
 .flowimg figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--fg-3)}
 .flowimg .hint{font-size:12.5px;color:var(--green)}
 /* slide-6 fields: four ruled columns */
@@ -522,7 +523,7 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       <a class="flow-scroll" href="images/research-flow.png" target="_blank" rel="noopener" aria-label="Open the research flow diagram at full size">
         <picture><source srcset="images/research-flow.webp" type="image/webp"><img src="images/research-flow.png" width="2274" height="885" alt="CMX Lab research flow: 1 Construction fundamentals and industry challenges, 2 Digitization and datafication, 3 Construction data assets, 4 Construction data and knowledge hub, 5 Purpose-specific AI-ready data, 6 AI intelligence and agentic action, 7 Construction transformation and innovation (DX, AX, RX, X+), 8 Feedback and learning loop"></picture>
       </a>
-      <figcaption><span class="hint"><span class="en">Scroll sideways or click to enlarge</span><span class="ko">좌우로 스크롤하거나 클릭해 크게 보기</span></span></figcaption>
+      <figcaption><span class="hint"><span class="en">Tap to enlarge</span><span class="ko">눌러서 크게 보기</span></span></figcaption>
     </figure>
     <div class="flow-intro">
       <p class="ko">CMX Lab은 건설산업의 디지털 전환, AI 전환, 그리고 차세대 전환(DX · AX · RX · X+)을 연구합니다. 우리는 최신 AI 모델 자체를 연구의 출발점으로 삼지 않습니다. 건설공학의 기초이론, 현장의 문제와 업무프로세스를 분석하고, 이를 해결하기 위해 필요한 정보와 데이터를 먼저 정의합니다.</p>
