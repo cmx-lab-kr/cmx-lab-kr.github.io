@@ -84,16 +84,16 @@ ul{margin:0;padding:0;list-style:none}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent 0%,#000 55%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 55%,transparent 100%)}
 .hero-in{padding-block:88px 0;display:grid;gap:28px;justify-items:start}
 .hero-grid{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:24px;align-items:center}
-.hero-text{display:grid;gap:26px;justify-items:start;min-width:0}
+.hero-text{display:grid;gap:28px;justify-items:start;min-width:0}
 .chip{display:inline-flex;align-items:center;gap:8px;font:500 12.5px/1 var(--f-mono);letter-spacing:.02em;color:var(--green);border:1px solid var(--line-g);padding:9px 14px;border-radius:999px}
 .chip i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,112,62,.14)}
 .kicker{font:500 12px/1.4 var(--f-mono);letter-spacing:.16em;color:var(--fg-3);text-transform:uppercase}
 .kicker b{color:var(--green);font-weight:500}
-.hero h1{font-size:clamp(40px,4.9vw,66px);line-height:1.02;font-weight:800;letter-spacing:-.04em;color:var(--ink);max-width:13ch}
+.hero h1{font-size:clamp(38px,4.6vw,62px);line-height:1.14;font-weight:800;letter-spacing:-.035em;color:var(--ink);max-width:13ch;padding-block:4px}
 .hero h1 em{font-style:normal;color:var(--green)}
 .hero h1 .ko{font-size:.9em;line-height:1.12;display:block;max-width:none}
-.lede{display:grid;gap:10px;max-width:52ch}
-.lede strong{font-size:clamp(18px,1.8vw,22px);font-weight:600;color:var(--fg);letter-spacing:-.01em;line-height:1.4}
+.lede{display:grid;gap:14px;max-width:52ch}
+.lede strong{font-size:clamp(18px,1.8vw,22px);font-weight:600;color:var(--fg);letter-spacing:-.01em;line-height:1.45}
 .lede span{font-size:clamp(15px,1.4vw,17px);color:var(--fg-2);line-height:1.65}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:14px 22px;border-radius:12px;transition:transform .15s,background .15s,border-color .15s}
@@ -316,7 +316,8 @@ section.alt{background:var(--bg-2)}
 .track li{font-size:13px;padding:6px 10px;border-radius:999px;border:1px solid var(--line-g);color:var(--green-strong)}
 .apply{margin-top:16px;background:var(--green);color:#fff;border-radius:var(--r);padding:26px 30px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 .apply p{color:rgba(255,255,255,.88);max-width:62ch}
-.apply p strong{color:#fff}
+.apply p strong{color:#fff;font-size:18px;display:inline-block;margin-bottom:4px}
+.apply p a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .apply .btn{background:#fff;color:var(--green)}
 @media (max-width:860px){.join-top,.tracks{grid-template-columns:1fr;gap:20px}.track{padding:22px}.apply{padding:22px}}
 
@@ -331,6 +332,10 @@ section.alt{background:var(--bg-2)}
 .copy:hover{border-color:var(--green);color:var(--green)}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--fg);color:#fff;font-size:14px;padding:10px 16px;border-radius:10px;transition:.2s;z-index:70;pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+.cinfo{display:grid;gap:22px;align-content:start;min-width:0}
+.clinks{display:flex;flex-wrap:wrap;gap:8px}
+.contact a.cl{color:var(--fg);text-decoration:underline;text-decoration-color:var(--line-g);text-underline-offset:4px;transition:color .15s,text-decoration-color .15s}
+.contact a.cl:hover{color:var(--green);text-decoration-color:var(--green)}
 .pending{font:500 12px/1 var(--f-mono);padding:6px 9px;border-radius:6px;background:var(--bg-2);color:var(--fg-3);border:1px dashed var(--line-g)}
 .map{border:1px solid var(--line-g);border-radius:var(--r);background:var(--bg-2);position:relative;overflow:hidden;min-height:320px}
 .map svg{position:absolute;inset:0;width:100%;height:100%}
@@ -366,7 +371,9 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
 @media (max-width:560px){.fields{grid-template-columns:1fr}.fieldc{border-left:0!important;padding-left:0}.fieldc+.fieldc{border-top:1px solid var(--line-g)}}
 /* google map */
 .map{min-height:360px;background:var(--bg-2)}
-.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.map-fallback{position:absolute;inset:0;width:100%;height:100%}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1}
+.map-open{z-index:2}
 .map-open{position:absolute;right:12px;bottom:12px;background:#fff;border:1px solid var(--line-g);border-radius:10px;padding:9px 13px;font-size:13.5px;font-weight:600;color:var(--green);box-shadow:var(--shadow)}
 .map-open:hover{border-color:var(--green)}
 </style>
@@ -620,9 +627,9 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       <div class="portrait" aria-hidden="true"><small>LAB DIRECTOR</small><span>YK</span></div>
       <div class="pi-body">
         <span class="role-l"><span class="ko">연구실 책임자</span><span class="en">Lab Director</span></span>
-        <h3><span class="ko">김이제 교수<small>Yije Kim, Ph.D.</small></span><span class="en">Dr. Yije Kim<small>Assistant Professor</small></span></h3>
+        <h3><span class="ko">Dr. 김이제<small>Yije Kim</small></span><span class="en">Dr. Yije Kim<small>Assistant Professor</small></span></h3>
         <p class="aff"><span class="ko">호남대학교 AI융합대학 건축공학과 조교수</span><span class="en">Dept. of Architectural Engineering, College of AI Convergence, Honam University</span></p>
-        <p class="pi-bio"><span class="ko">김이제 교수는 BIM과 AI를 기반으로 설계·시공·유지관리 업무의 자동화·최적화 및 표준화를 연구합니다. 연구성과가 논문과 기술에 머무르지 않고 산업의 실제 업무프로세스, 지침과 표준 및 교육으로 확장되는 연구를 지향합니다.</span><span class="en">Dr. Kim studies the automation, optimization, and standardization of design, construction, and maintenance work based on BIM and AI. He pursues research whose outcomes go beyond papers and technologies to shape real industry workflows, guidelines and standards, and education.</span></p>
+        <p class="pi-bio"><span class="ko">Dr. 김이제는 BIM과 AI를 기반으로 설계·시공·유지관리 업무의 자동화·최적화 및 표준화를 연구합니다. 연구성과가 논문과 기술에 머무르지 않고 산업의 실제 업무프로세스, 지침과 표준 및 교육으로 확장되는 연구를 지향합니다.</span><span class="en">Dr. Kim studies the automation, optimization, and standardization of design, construction, and maintenance work based on BIM and AI. He pursues research whose outcomes go beyond papers and technologies to shape real industry workflows, guidelines and standards, and education.</span></p>
         <div class="cv">
           <div>
             <h4><span class="ko">학력</span><span class="en">Education</span></h4>
@@ -721,7 +728,7 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       </article>
     </div>
     <div class="apply">
-      <p><span class="ko"><strong>지원 및 문의</strong> · CV와 관심 연구 분야를 yj.kim@honam.ac.kr로 보내주세요.</span><span class="en"><strong>Interested?</strong> Send your CV and research interests to yj.kim@honam.ac.kr. We'd love to hear from you.</span></p>
+      <p><span class="ko"><strong>CMX Lab과 함께하고 싶으신가요?</strong><br>CV와 관심 연구 분야를 간단히 정리하여 <a href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a>로 보내주시기 바랍니다. 여러분의 연락을 기다립니다.</span><span class="en"><strong>Interested in joining CMX Lab?</strong><br>Please send your CV and a brief statement of research interests to <a href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a>. We look forward to hearing from you.</span></p>
       <a class="btn" href="#contact"><span class="ko">연락처 보기</span><span class="en">Get in Touch</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
@@ -736,15 +743,29 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       <h2><span class="ko">연락처</span><span class="en">Contact</span></h2>
     </div>
     <div class="contact">
+      <div class="cinfo">
       <dl>
-        <div><dt>Email</dt><dd><span id="mail">yj.kim@honam.ac.kr</span><button class="copy" type="button" id="copy-mail" data-copy="yj.kim@honam.ac.kr"><span class="ko">복사</span><span class="en">Copy</span></button></dd></div>
-        <div><dt>Tel</dt><dd>+82-62-940-3622</dd></div>
-        <div><dt><span class="ko">소속</span><span class="en">Department</span></dt><dd><span class="ko">호남대학교 AI융합대학 건축공학과</span><span class="en">Dept. of Architectural Engineering, College of AI Convergence</span><small>Honam University</small></dd></div>
-        <div><dt><span class="ko">주소</span><span class="en">Address</span></dt><dd><span class="ko">(62399) 광주광역시 광산구 호남대길 112, 호남대학교 8801-2</span><span class="en">8801-2, 112, Honamdae-gil, Gwangsan-gu, Gwangju, Republic of Korea 62399</span></dd></div>
-        <div><dt><span class="ko">책임자</span><span class="en">Director</span></dt><dd><span class="ko">김이제 교수 (Yije Kim, Ph.D.)</span><span class="en">Prof. Yije Kim, Ph.D.</span></dd></div>
+        <div><dt>Email</dt><dd><a class="cl" id="mail" href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a><button class="copy" type="button" id="copy-mail" data-copy="yj.kim@honam.ac.kr"><span class="ko">복사</span><span class="en">Copy</span></button></dd></div>
+        <div><dt>Tel</dt><dd><a class="cl" href="tel:+82629403622">+82-62-940-3622</a></dd></div>
+        <div><dt><span class="ko">소속</span><span class="en">Department</span></dt><dd><a class="cl" href="https://www.honam.ac.kr" target="_blank" rel="noopener"><span class="ko">호남대학교 AI융합대학 건축공학과</span><span class="en">Dept. of Architectural Engineering, College of AI Convergence</span></a><small>Honam University</small></dd></div>
+        <div><dt><span class="ko">주소</span><span class="en">Address</span></dt><dd><a class="cl" href="https://www.google.com/maps/search/?api=1&amp;query=%ED%98%B8%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90" target="_blank" rel="noopener"><span class="ko">(62399) 광주광역시 광산구 호남대길 112, 호남대학교 8801-2</span><span class="en">8801-2, 112, Honamdae-gil, Gwangsan-gu, Gwangju, Republic of Korea 62399</span></a></dd></div>
       </dl>
+      <div class="clinks">
+        <a class="lk" href="mailto:yj.kim@honam.ac.kr"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2.5 4.5L8 9l5.5-4.5"/></svg>Email</a>
+        <a class="lk" href="https://scholar.google.com/scholar?q=%22Yije+Kim%22+BIM" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1.5 6L8 2.5 14.5 6 8 9.5z"/><path d="M4.5 7.6v3.2c1 1 2.2 1.5 3.5 1.5s2.5-.5 3.5-1.5V7.6"/></svg>Google Scholar</a>
+        <a class="lk" href="https://www.honam.ac.kr" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 14V6.5L8 3l6 3.5V14"/><path d="M1 14h14M6 14v-3.5h4V14"/></svg>Honam University</a>
+        <a class="lk" href="https://github.com/cmx-lab-kr" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .7a7.3 7.3 0 0 0-2.3 14.2c.4.1.5-.2.5-.4v-1.3c-2 .4-2.5-.9-2.5-.9-.3-.8-.8-1-.8-1-.7-.5 0-.5 0-.5.7.1 1.1.8 1.1.8.7 1.1 1.7.8 2.1.6.1-.5.3-.8.5-1-1.6-.2-3.3-.8-3.3-3.6 0-.8.3-1.5.8-2-.1-.2-.3-.9.1-1.9 0 0 .6-.2 2 .8a7 7 0 0 1 3.7 0c1.4-1 2-.8 2-.8.4 1 .2 1.7.1 1.9.5.5.8 1.2.8 2 0 2.8-1.7 3.4-3.3 3.6.3.2.5.7.5 1.4v2.1c0 .2.1.5.5.4A7.3 7.3 0 0 0 8 .7z"/></svg>GitHub</a>
+      </div>
+      </div>
       <div class="map">
-        <iframe title="Google Maps: Honam University" src="https://maps.google.com/maps?q=%ED%98%B8%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90&amp;hl=ko&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <svg class="map-fallback" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g stroke="#E1E8E4" stroke-width="1" fill="none"><path d="M0 80h400M0 170h400M0 255h400M70 0v320M190 0v320M300 0v320"/></g>
+          <g stroke="#7C847F" stroke-width="10" stroke-opacity=".16" fill="none" stroke-linecap="round"><path d="M-10 210 C 90 190, 160 120, 410 110"/><path d="M120 -10 L 260 330"/></g>
+          <g fill="#FFFFFF" stroke="#CFE3D7"><rect x="200" y="120" width="70" height="36" rx="4"/><rect x="85" y="95" width="80" height="50" rx="4"/><rect x="310" y="190" width="70" height="50" rx="4"/><rect x="80" y="190" width="90" height="45" rx="4"/></g>
+          <rect x="205" y="168" width="60" height="40" rx="4" fill="#E8F3ED" stroke="#00703E"/>
+          <circle cx="235" cy="160" r="7" fill="#00703E"/><circle cx="235" cy="160" r="14" fill="#00703E" fill-opacity=".18"/>
+        </svg>
+        <iframe title="Google Maps: Honam University" src="https://maps.google.com/maps?q=%ED%98%B8%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90&amp;hl=ko&amp;z=16&amp;output=embed" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <a class="map-open" href="https://www.google.com/maps/search/?api=1&amp;query=%ED%98%B8%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90" target="_blank" rel="noopener"><span class="ko">Google 지도에서 보기 ↗</span><span class="en">Open in Google Maps ↗</span></a>
       </div>
     </div>
