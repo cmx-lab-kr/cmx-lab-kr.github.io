@@ -405,6 +405,12 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
 .award .atags>span{font-size:11.5px;line-height:1;padding:5px 8px;border-radius:6px;background:var(--green-soft);color:var(--green-strong)}
 @media (max-width:1000px){.awards{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.awards{grid-template-columns:1fr}}
+/* awards: aligned rows, equal cards */
+@media (min-width:561px){.awards{grid-auto-rows:1fr}}
+.award{display:flex;flex-direction:column;gap:14px}
+.award .stu{position:absolute;top:30px;right:26px;margin:0;z-index:1}
+.award .atags{margin-top:auto;padding-top:2px}
+@media (min-width:1001px){.award h4{min-height:2.8em}.award>p:not(.paper):not(.atags){min-height:5.1em}}
 .pi{grid-template-columns:auto 1fr;gap:32px;padding:36px}
 .avatar-photo{display:block;width:112px;height:112px;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--line-g)}
 .avatar-photo img{display:block;width:100%;height:100%;object-fit:cover}
@@ -643,7 +649,7 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
 
     <div class="sub-h"><h3>Awards</h3><p>2026 – 2025</p></div>
     <div class="awards">
-      <article class="award up"><span class="yr">2026</span><h4><span class="en">Outstanding Paper Award, MOLIT R&amp;D</span><span class="ko">국토교통 R&amp;D 우수논문상</span></h4><p><span class="en">To be presented at MOLIT Innovation Day, late 2026</span><span class="ko">2026년 하반기 국토교통 혁신의 날 시상 예정</span></p><p class="paper">Optimizing BIM drawing element placement through reinforcement learning<br><span><b>Yije Kim</b>, J. Park, J. Oh, J. Bum, Sangyoon Chin</span></p><p class="atags"><span><span class="en">First author</span><span class="ko">제1저자</span></span></p></article>
+      <article class="award up"><span class="yr">2026</span><h4><span class="en">Outstanding Paper Award, MOLIT R&amp;D</span><span class="ko">국토교통 R&amp;D 우수논문상</span></h4><p><span class="en">To be presented at MOLIT Innovation Day, late 2026</span><span class="ko">2026년 하반기 국토교통 혁신의 날 시상 예정</span></p><p class="paper">Optimizing BIM drawing element placement through reinforcement learning<br><span><b>Yije Kim</b>, J. Park, J. Oh, J. Bum, Sangyoon Chin</span></p></article>
       <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span><span class="ko">학생 수상</span></span><h4><span class="en">Outstanding Paper Award</span><span class="ko">우수논문상</span></h4><p><span class="en">Society for Computational Design and Engineering (CDE), 2026 Summer Conference</span><span class="ko">한국CDE학회 2026 하계학술대회</span></p><p class="paper">Agentic 3D BIM view generation for evaluating design guidelines with visual and spatial reasoning<br><span>Minji Kim, Minki Hong, <b>Yije Kim</b>, Sangyoon Chin</span></p><p class="atags"><span><span class="en">Corresponding</span><span class="ko">교신저자</span></span></p></article>
       <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span><span class="ko">학생 수상</span></span><h4><span class="en">Best Paper Award</span><span class="ko">최우수논문상</span></h4><p><span class="en">Korean Institute of BIM (KIBIM), 2026 Annual Conference</span><span class="ko">한국BIM학회 2026 정기학술대회</span></p><p class="paper">Evaluating design guidelines from BIM views using vision-language models<br><span>Minji Kim, Minki Hong, <b>Yije Kim</b>, Sangyoon Chin, Seonga Kim</span></p><p class="atags"><span><span class="en">Corresponding</span><span class="ko">교신저자</span></span></p></article>
       <article class="award"><span class="yr">2025</span><h4><span class="en">Top 20 Outstanding R&amp;D Achievements</span><span class="ko">국토교통 R&amp;D 우수성과 20선</span></h4><p><span class="en">Ministry of Land, Infrastructure and Transport (MOLIT)</span><span class="ko">국토교통부</span></p><p class="paper"><span class="en">Development and industrial application of world-class automation technology for generating BIM design deliverables</span><span class="ko">세계최고수준의 BIM 설계 성과물 생성 자동화 기술 개발 및 산업 적용</span></p></article>
