@@ -395,7 +395,10 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
 .axis-top h4{padding-top:4px;line-height:1.3}
 .tcol h4{min-height:52px;align-items:flex-start}
 .tcol h4 i{margin-top:9px}
-.awards{grid-template-columns:repeat(4,minmax(0,1fr))}
+.awards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.award .stu{justify-self:start;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--green-strong);background:var(--green-soft);padding:5px 9px;border-radius:999px;margin-top:-4px}
+.award .paper{font-size:13.5px;line-height:1.5;color:var(--fg-2);border-top:1px solid var(--line);padding-top:12px}
+.award .paper span{display:block;margin-top:4px;color:var(--fg-3);font-size:12.5px}
 @media (max-width:1000px){.awards{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.awards{grid-template-columns:1fr}}
 .pi{grid-template-columns:auto 1fr;gap:32px;padding:36px}
@@ -502,10 +505,6 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
         <p><span class="en">Better AI begins with better data, clearer knowledge, and reliable context.</span><span class="ko">더 나은 AI는 더 나은 데이터, 더 명확한 지식, 그리고 신뢰할 수 있는 맥락에서 출발합니다.</span></p>
       </aside>
     </div>
-    <div class="statement">
-      <span class="tag">Our stance</span>
-      <p><span class="en">We do not simply apply AI to construction. We build the data, knowledge, and agentic foundation that makes construction AI reliable, reusable, and actionable.</span><span class="ko">CMX Lab은 AI를 건설에 단순히 적용하는 데 그치지 않습니다. 건설 AI가 신뢰할 수 있고, 재사용 가능하며, 실제로 작동할 수 있도록 그 토대가 되는 데이터·지식·에이전트 체계를 구축합니다.</span></p>
-    </div>
   </div>
 </section>
 
@@ -592,7 +591,7 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       </div>
       <div class="tcol">
         <h4><i></i>Agentic Systems Engineering</h4>
-        <ul><li>Context Engineering</li><li>Agent Memory</li><li class="sub">STM: Short-Term Memory</li><li class="sub">LTM: Long-Term Memory</li><li>Harness Engineering</li><li>Task Decomposition</li><li>Agent Workflow</li><li>Agent Loop</li><li>Reflection &amp; Retry</li><li>Agent Learning</li><li>Multi-Agent Systems</li><li>Agent Graph</li><li>Tool Use / API / MCP</li><li>Human-in-the-loop</li><li>Guardrails</li><li>Evaluation &amp; Traceability</li></ul>
+        <ul><li>Context Engineering</li><li>Agent Memory (STM, LTM)</li><li>Harness Engineering</li><li>Task Decomposition</li><li>Agent Workflow</li><li>Agent Loop</li><li>Reflection &amp; Retry</li><li>Agent Learning</li><li>Multi-Agent Systems</li><li>Agent Graph</li><li>Tool Use / API / MCP</li><li>Human-in-the-loop</li><li>Guardrails</li><li>Evaluation &amp; Traceability</li></ul>
       </div>
       <div class="tcol">
         <h4><i></i>Cyber-Physical Intelligence</h4>
@@ -636,6 +635,8 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
     <div class="sub-h"><h3>Awards</h3><p>2026 – 2025</p></div>
     <div class="awards">
       <article class="award up"><span class="yr">2026</span><h4><span class="en">Outstanding Paper Award, MOLIT R&amp;D</span><span class="ko">국토교통 R&amp;D 우수논문상</span></h4><p><span class="en">To be presented at MOLIT Innovation Day, late 2026</span><span class="ko">2026년 하반기 국토교통 혁신의 날 시상 예정</span></p></article>
+      <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span><span class="ko">학생 수상</span></span><h4><span class="en">Outstanding Paper Award</span><span class="ko">우수논문상</span></h4><p><span class="en">Society for Computational Design and Engineering (CDE), 2026 Summer Conference</span><span class="ko">한국CDE학회 2026 하계학술대회</span></p><p class="paper">Agentic 3D BIM view generation for evaluating design guidelines with visual and spatial reasoning<br><span>Minji Kim, Minki Hong, Yije Kim, Sangyoon Chin</span></p></article>
+      <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span><span class="ko">학생 수상</span></span><h4><span class="en">Best Paper Award</span><span class="ko">최우수논문상</span></h4><p><span class="en">Korean Institute of BIM (KIBIM), 2026 Annual Conference</span><span class="ko">한국BIM학회 2026 정기학술대회</span></p><p class="paper">Evaluating design guidelines from BIM views using vision-language models<br><span>Minji Kim, Minki Hong, Yije Kim, Sangyoon Chin, Seonga Kim</span></p></article>
       <article class="award"><span class="yr">2025</span><h4><span class="en">Top 20 Outstanding R&amp;D Achievements</span><span class="ko">국토교통 R&amp;D 우수성과 20선</span></h4><p><span class="en">Ministry of Land, Infrastructure and Transport (MOLIT)</span><span class="ko">국토교통부</span></p></article>
       <article class="award"><span class="yr">2025</span><h4><span class="en">Memorial Award</span><span class="ko">Memorial Award</span></h4><p><span class="en">Korean Institute of BIM (KIBIM)</span><span class="ko">한국BIM학회</span></p></article>
       <article class="award"><span class="yr">2025</span><h4><span class="en">Teaching Excellence Award</span><span class="ko">Teaching Excellence Award</span></h4><p><span class="en">Honam University</span><span class="ko">호남대학교</span></p></article>
@@ -907,19 +908,19 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
     {t:'j',y:2024,ti:'Rule-based automation algorithm for generating 2D deliverables from BIM',au:'<b>Kim, Y.</b>, Chin, S., &amp; Choo, S.',ve:'Journal of Building Engineering, 97, 111033',r:['first']},
     {t:'j',y:2023,ti:'Quantitative Evaluation Method and Process of BIM Data for Generating BIM-Based 2D Deliverables',au:'<b>Kim, Y.</b>, Chin, S., &amp; Choo, S.',ve:'Buildings, 13(12), 3124',r:['first']},
     {t:'j',y:2023,ti:'Deep-learning-based sound classification model for concrete pouring work monitoring at a construction site',au:'Kim, I., <b>Kim, Y.</b>, &amp; Chin, S.',ve:'Applied Sciences, 13(8), 4789',r:['co']},
-    {t:'d',y:2023,ti:'유전자 알고리즘을 활용한 BIM 도면 주석 간섭 조정 기술 개발',au:'전진규, 박재호, <b>김이제</b>, &amp; 진상윤',ve:'KIBIM Magazine, 13(3), 85–95',r:['corr']},
+    {t:'d',y:2023,ti:'Development of BIM Drawing Annotation Interference Adjustment Technology Using Genetic Algorithm',au:'Jeon, J., Park, J., <b>Kim, Y.</b>, &amp; Chin, S.',ve:'Journal of KIBIM, 13(3), 85–95',r:['corr']},
     {t:'j',y:2022,ti:'BIM data requirements for 2D deliverables in construction documentation',au:'<b>Kim, Y.</b>, Chin, S., &amp; Choo, S.',ve:'Automation in Construction, 140, 104340',r:['first']},
     {t:'j',y:2022,ti:'Sound localization framework for construction site monitoring',au:'Kim, I. C., <b>Kim, Y. J.</b>, &amp; Chin, S. Y.',ve:'Applied Sciences, 12(21), 10783',r:['co']},
     {t:'j',y:2022,ti:'Automatic stereo vision-based inspection system for particle shape analysis of coarse aggregates',au:'Tuan, N. M., <b>Kim, Y.</b>, Lee, J. Y., &amp; Chin, S.',ve:'Journal of Computing in Civil Engineering, 36(2), 04021034',r:['co']},
-    {t:'d',y:2020,ti:'실시설계단계 BIM 기반 도면 작업 효율 향상을 위한 도면화 템플릿 개발',au:'<b>김이제</b>, 김인채, &amp; 진상윤',ve:'KIBIM Magazine, 10(4), 98–109',r:['first']},
-    {t:'d',y:2020,ti:'국내 MEP 분야 BIM 활용 실태 조사 및 실무 적용 활성화 방안 제시',au:'<b>김이제</b>, 김용인, 김인채, &amp; 진상윤',ve:'KIBIM Magazine, 10(4), 70–80',r:['first']},
-    {t:'d',y:2019,ti:'BIM의 효율적 활용을 위한 전문협력업체 조기참여 필요성과 적용 방안',au:'<b>김이제</b>, &amp; 진상윤',ve:'한국 CDE 학회 논문집, 24(1), 19–29',r:['first']},
-    {t:'a',y:2025,ti:'BIM 설계 프로세스 혁신을 통한 건설산업 디지털 전환',au:'<b>김이제</b>, &amp; 진상윤',ve:'KIBIM Magazine, 15(2), 48–52',r:[]},
-    {t:'a',y:2019,ti:'설계 BIM과 시공 BIM',au:'진상윤, &amp; <b>김이제</b>',ve:'건축, 63(6), 52–55',r:[]}
+    {t:'d',y:2020,ti:'Developing a Drawing Template for BIM Software to Improve BIM-based Drawing Work Efficiency in the Construction Document Phase',au:'<b>Kim, Y.</b>, Kim, I., &amp; Chin, S.',ve:'Journal of KIBIM, 10(4), 98–109',r:['first']},
+    {t:'d',y:2020,ti:'A Study on Strategy and Utilization for Practical Application of BIM in MEP Area',au:'<b>Kim, Y.</b>, Kim, Y., Kim, I., &amp; Chin, S.',ve:'Journal of KIBIM, 10(4), 70–80',r:['first']},
+    {t:'d',y:2019,ti:'The Necessity and Application of Early Involvement of Specialty Contractors for Effective Use of BIM',au:'<b>Kim, Y.</b>, &amp; Chin, S.',ve:'Korean Journal of Computational Design and Engineering, 24(1), 19–29',r:['first']},
+    {t:'a',y:2025,ti:'Digital Transformation of the Construction Industry through BIM Design Process Innovation',au:'<b>Kim, Y.</b>, &amp; Chin, S.',ve:'KIBIM Magazine, 15(2), 48–52',r:[]},
+    {t:'a',y:2019,ti:'Design BIM and Construction BIM',au:'Chin, S., &amp; <b>Kim, Y.</b>',ve:'Architecture (Journal of the Architectural Institute of Korea), 63(6), 52–55',r:[]}
   ];
   var RL={first:['First author','제1저자'],corr:['Corresponding','교신저자'],co:['Co-author','공동저자']};
   var TL={j:['International journal','국제학술지'],d:['Domestic journal','국내학술지'],a:['Article','기고']};
-  var filt='all',expanded=false,LIMIT=8,box=document.getElementById('pubs'),moreBtn=document.getElementById('more');
+  var filt='all',shown=5,STEP=5,box=document.getElementById('pubs'),moreBtn=document.getElementById('more');
   
   function renderPubs(){
     var en=root.getAttribute('data-lang')==='en',li=en?0:1;
@@ -927,13 +928,13 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
     box.innerHTML=list.map(function(p,i){
       var tags='<span class="t">'+TL[p.t][li]+'</span>'+p.r.map(function(r){return '<span>'+RL[r][li]+'</span>'}).join('');
       var q='https://scholar.google.com/scholar?q='+encodeURIComponent(p.ti);
-      return '<article class="pub'+(!expanded&&i>=LIMIT?' hide':'')+'"><div class="y">'+p.y+'</div><div class="pub-body"><h3>'+p.ti+'</h3><div class="au">'+p.au+'</div><div class="ve">'+p.ve+'</div><div class="tags">'+tags+'</div></div><a class="go" href="'+q+'" target="_blank" rel="noopener">'+(en?'Find':'찾기')+' ↗</a></article>';
+      return '<article class="pub'+(i>=shown?' hide':'')+'"><div class="y">'+p.y+'</div><div class="pub-body"><h3>'+p.ti+'</h3><div class="au">'+p.au+'</div><div class="ve">'+p.ve+'</div><div class="tags">'+tags+'</div></div><a class="go" href="'+q+'" target="_blank" rel="noopener">'+(en?'Find':'찾기')+' ↗</a></article>';
     }).join('');
-    var hidden=Math.max(0,list.length-LIMIT);
-    moreBtn.hidden=hidden===0;
-    moreBtn.textContent=expanded?(en?'Show less':'접기'):(en?'Show '+hidden+' more':hidden+'편 더 보기');
+    var hidden=Math.max(0,list.length-shown),next=Math.min(STEP,hidden);
+    moreBtn.hidden=list.length<=STEP;
+    moreBtn.textContent=hidden>0?(en?'Show more (+'+next+')':'더 보기 (+'+next+')'):(en?'Show less':'접기');
   }
-  moreBtn.addEventListener('click',function(){expanded=!expanded;renderPubs()});
+  moreBtn.addEventListener('click',function(){var n=P.length;shown=shown>=n?STEP:shown+STEP;renderPubs();if(shown===STEP)document.getElementById('publications').scrollIntoView({behavior:'smooth'})});
   document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
     filt=b.dataset.f;expanded=false;
     document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-selected',x===b)});
