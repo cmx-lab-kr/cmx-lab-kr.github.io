@@ -68,6 +68,8 @@ ul{margin:0;padding:0;list-style:none}
 @media (max-width:520px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
 
 /* language toggle */
+:root[data-lang="en"] .ko{display:none!important}
+:root:not([data-lang="en"]) .en{display:none!important}
 
 /* NAV */
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
@@ -80,6 +82,9 @@ ul{margin:0;padding:0;list-style:none}
 .menu a:hover{color:var(--fg);background:var(--bg-2)}
 .menu a.on{color:var(--green);background:var(--green-soft)}
 .tools{display:flex;gap:8px;align-items:center}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg)}
+.lang button{font:600 12px/1 var(--f-mono);letter-spacing:.04em;border:0;background:none;color:var(--fg-3);padding:7px 10px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--green);color:#fff}
 .burger{display:none;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:38px;height:38px;border-radius:10px;cursor:pointer;place-items:center}
 @media (max-width:1020px){
   .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-left,0px)) 16px}
@@ -259,7 +264,6 @@ section.alt{background:var(--bg-2)}
 .pi h3{font-size:clamp(28px,3vw,36px);font-weight:700}
 .pi h3 small{font-size:.5em;font-weight:500;color:var(--fg-3);margin-left:10px;letter-spacing:0}
 .pi .aff{font-size:15px;color:var(--fg-2);margin-top:-10px}
-.pi .aff-ko{font-size:13px;color:var(--fg-3);margin-top:-14px;letter-spacing:-.01em}
 .pi-bio{color:var(--fg-2);max-width:66ch;font-size:16px}
 .cv{display:grid;grid-template-columns:1fr 1fr;gap:28px;border-top:1px solid var(--line);padding-top:22px}
 .cv h4{font:600 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
@@ -448,15 +452,19 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   <div class="wrap">
     <a class="brand" href="#top" aria-label="CMX Lab home"><span><b>CMX</b> Lab</span></a>
     <div class="menu" id="menu">
-      <a href="#about"><span class="en">About</span></a>
-      <a href="#research"><span class="en">Research</span></a>
-      <a href="#projects"><span class="en">Projects</span></a>
-      <a href="#members"><span class="en">Members</span></a>
-      <a href="#publications"><span class="en">Publications</span></a>
-      <a href="#join"><span class="en">Join Us</span></a>
-      <a href="#contact"><span class="en">Contact</span></a>
+      <a href="#about"><span class="ko">소개</span><span class="en">About</span></a>
+      <a href="#research"><span class="ko">연구</span><span class="en">Research</span></a>
+      <a href="#projects"><span class="ko">과제·수상</span><span class="en">Projects</span></a>
+      <a href="#members"><span class="ko">구성원</span><span class="en">Members</span></a>
+      <a href="#publications"><span class="ko">논문</span><span class="en">Publications</span></a>
+      <a href="#join"><span class="ko">참여</span><span class="en">Join Us</span></a>
+      <a href="#contact"><span class="ko">연락처</span><span class="en">Contact</span></a>
     </div>
     <div class="tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="lang-ko" data-lang="ko" aria-pressed="false">KO</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+      </div>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
       </button>
@@ -473,14 +481,14 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
           <h1><span class="h-cmx"><b>CMX</b> Lab</span><span class="h-full">Construction Management <em>Transformation</em> Lab</span></h1>
           <div class="lede">
             <strong class="en">From Construction Data to Knowledge, Intelligence, and Action.</strong>
-            
-            
+            <strong class="ko">건설 데이터를 지식으로, 지식을 지능으로, 지능을 실행으로.</strong>
+            <span class="ko">건설산업에서 발생하는 다양한 데이터를 지식과 지능으로 전환하고, AI와 Agentic AI를 통해 설계·시공·운영의 실질적인 변화를 만듭니다.</span>
             <span class="en">We transform diverse construction data into knowledge and intelligence, and create real change across design, construction, and operation through AI and agentic AI.</span>
           </div>
           <div class="cta">
-            <a class="btn btn-g" href="#research"><span class="en">Explore Research</span>
+            <a class="btn btn-g" href="#research"><span class="ko">연구 살펴보기</span><span class="en">Explore Research</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            <a class="btn btn-o" href="#join"><span class="en">Join the Lab</span></a>
+            <a class="btn btn-o" href="#join"><span class="ko">함께하기</span><span class="en">Join the Lab</span></a>
           </div>
         </div>
         <figure class="field" aria-label="Abstract animation: scattered construction data resolving into a structured model and a knowledge graph">
@@ -497,29 +505,29 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">The Lab</span>
-      <h2><span class="en">About</span></h2>
+      <h2><span class="ko">연구실 소개</span><span class="en">About</span></h2>
     </div>
-    <p class="quote"><span class="en">We turn construction data into <em>knowledge</em>, knowledge into <em>intelligence</em>, and intelligence into <em>action</em>.</span></p>
+    <p class="quote"><span class="en">We turn construction data into <em>knowledge</em>, knowledge into <em>intelligence</em>, and intelligence into <em>action</em>.</span><span class="ko">건설 데이터는 <em>지식</em>이 되고, 지식은 <em>지능</em>이 되며, 지능은 <em>실행</em>으로 이어집니다.</span></p>
     <div class="about">
       <div class="about-text">
         <p class="en"><strong>CMX Lab</strong> transforms heterogeneous construction data into reusable knowledge and purpose-specific AI-ready data. We develop AI agents and cyber-physical systems for design, construction, operation, and maintenance. Our research integrates automation and optimization with data standardization, governance, and real-world validation to turn construction data into knowledge, intelligence, and action.</p>
-        
-        
+        <p class="ko"><strong>CMX Lab (Construction Management Transformation Lab)</strong>은 건설산업 곳곳에 흩어진 이질적인 데이터를 재사용 가능한 지식과 연구 목적에 맞는 AI-Ready Data로 전환합니다.</p>
+        <p class="ko">설계·시공·운영·유지관리 전 단계를 위한 AI 에이전트와 사이버-물리 시스템(Cyber-Physical System)을 개발하며, 자동화·최적화 연구를 데이터 표준화·거버넌스 및 현장 실증과 결합하여 건설 데이터가 지식과 지능, 그리고 실제 현장의 실행으로 이어지도록 합니다.</p>
         <div class="vision">
           <small>Vision</small>
           <b class="en">A reusable and evolving data–knowledge–AI infrastructure for construction transformation</b>
-          
+          <b class="ko">건설산업의 전환을 이끄는, 재사용 가능하고 지속적으로 진화하는 데이터–지식–AI 인프라</b>
         </div>
       </div>
       <aside class="pillars">
-        <h3><span class="en">What we build</span></h3>
+        <h3><span class="en">What we build</span><span class="ko">연구 방향</span></h3>
         <ul>
-          <li><i>—</i><span class="en">Building AI-Ready Data for Construction Transformation</span></li>
-          <li><i>—</i><span class="en">Connecting Fundamentals, Data, Knowledge, and AI</span></li>
-          <li><i>—</i><span class="en">From Design Data to Construction Action</span></li>
-          <li><i>—</i><span class="en">Research for Real-World Transformation</span></li>
+          <li><i>—</i><span class="en">Building AI-Ready Data for Construction Transformation</span><span class="ko">건설 전환을 위한 AI-Ready Data 구축</span></li>
+          <li><i>—</i><span class="en">Connecting Fundamentals, Data, Knowledge, and AI</span><span class="ko">기초이론·데이터·지식·AI의 유기적 연결</span></li>
+          <li><i>—</i><span class="en">From Design Data to Construction Action</span><span class="ko">설계 데이터에서 시공 현장의 실행까지</span></li>
+          <li><i>—</i><span class="en">Research for Real-World Transformation</span><span class="ko">실제 산업의 변화로 이어지는 연구</span></li>
         </ul>
-        <p><span class="en">Better AI begins with better data, clearer knowledge, and reliable context.</span></p>
+        <p><span class="en">Better AI begins with better data, clearer knowledge, and reliable context.</span><span class="ko">더 나은 AI는 더 나은 데이터, 더 명확한 지식, 그리고 신뢰할 수 있는 맥락에서 출발합니다.</span></p>
       </aside>
     </div>
   </div>
@@ -530,8 +538,8 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">What We Study</span>
-      <h2><span class="en">Research</span></h2>
-      <p><span class="en">From construction data to knowledge, intelligence, action, and transformation.</span></p>
+      <h2><span class="ko">연구</span><span class="en">Research</span></h2>
+      <p><span class="en">From construction data to knowledge, intelligence, action, and transformation.</span><span class="ko">건설 데이터에서 출발해 지식과 지능, 실행을 거쳐 산업의 전환에 이르기까지.</span></p>
     </div>
 
     <div class="sub-h"><h3>Research Flow</h3><p>Our Shared Research Approach</p></div>
@@ -539,59 +547,59 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       <a class="flow-scroll" href="images/research-flow.png" target="_blank" rel="noopener" aria-label="Open the research flow diagram at full size">
         <picture><source srcset="images/research-flow.webp" type="image/webp"><img src="images/research-flow.png" width="2274" height="885" alt="CMX Lab research flow: 1 Construction fundamentals and industry challenges, 2 Digitization and datafication, 3 Construction data assets, 4 Construction data and knowledge hub, 5 Purpose-specific AI-ready data, 6 AI intelligence and agentic action, 7 Construction transformation and innovation (DX, AX, RX, X+), 8 Feedback and learning loop"></picture>
       </a>
-      <figcaption><span class="hint"><span class="en">Tap to enlarge</span></span></figcaption>
+      <figcaption><span class="hint"><span class="en">Tap to enlarge</span><span class="ko">눌러서 크게 보기</span></span></figcaption>
     </figure>
     <div class="flow-intro">
-      
-      
+      <p class="ko">CMX Lab은 건설산업의 디지털 전환, AI 전환, 그리고 차세대 전환(DX · AX · RX · X+)을 연구합니다. 우리는 최신 AI 모델 자체를 연구의 출발점으로 삼지 않습니다. 건설공학의 기초이론, 현장의 문제와 업무프로세스를 분석하고, 이를 해결하기 위해 필요한 정보와 데이터를 먼저 정의합니다.</p>
+      <p class="ko">다양한 건설데이터를 데이터·지식 허브로 연결하고, 연구목적별 AI-Ready Data와 신뢰 가능한 Agentic AI를 구축하여 건설산업의 의사결정과 작업방식을 변화시키는 것이 CMX Lab의 목표입니다.</p>
       <p class="en">CMX Lab studies the digital, AI, and next-generation transformation of the construction industry (DX · AX · RX · X+). We do not start from the latest AI model. We first analyze construction fundamentals, field problems, and work processes, and define the information and data needed to solve them.</p>
       <p class="en">Our goal is to connect diverse construction data through a data and knowledge hub, build purpose-specific AI-ready data and reliable agentic AI, and change how the industry makes decisions and gets work done.</p>
     </div>
 
-    <div class="sub-h"><h3>Research Fields</h3><p><span class="en">The fields themselves keep transforming — the X in CMX Lab</span></p></div>
+    <div class="sub-h"><h3>Research Fields</h3><p><span class="en">The fields themselves keep transforming — the X in CMX Lab</span><span class="ko">연구 분야 또한 끊임없이 전환됩니다 — CMX Lab의 X가 뜻하는 것</span></p></div>
     <div class="fields">
       <article class="fieldc">
-        <h4><span class="en">Construction Information &amp; Data Intelligence</span></h4>
+        <h4><span class="en">Construction Information &amp; Data Intelligence</span><span class="ko">건설정보·데이터 지능</span><small lang="en" class="ko">Construction Information &amp; Data Intelligence</small></h4>
         <p class="kw">Data Requirements · Quality · Integration · Ontology/KG · AI-Ready Data · Governance · Benchmark</p>
         <p class="motto">Turning fragmented construction data into reusable knowledge assets</p>
       </article>
       <article class="fieldc">
-        <h4><span class="en">BIM Design, Evaluation &amp; Automation Intelligence</span></h4>
+        <h4><span class="en">BIM Design, Evaluation &amp; Automation Intelligence</span><span class="ko">BIM 설계·평가·자동화 지능</span><small lang="en" class="ko">BIM Design, Evaluation &amp; Automation Intelligence</small></h4>
         <p class="kw">BIM Requirements · Compliance Checking · VLM Evaluation · Design Automation · Design Agent</p>
         <p class="motto">Requirements → Evaluation → Reasoning → Revision → Deliverable Generation</p>
       </article>
       <article class="fieldc">
-        <h4><span class="en">Construction Site &amp; Delivery Intelligence</span></h4>
+        <h4><span class="en">Construction Site &amp; Delivery Intelligence</span><span class="ko">건설현장·사업수행 지능</span><small lang="en" class="ko">Construction Site &amp; Delivery Intelligence</small></h4>
         <p class="kw">Schedule/Cost/Resources · Logistics · Quality/Safety · Multimodal Sensing · Digital Twin · Physical AI</p>
         <p class="motto">Observation → Judgment → Evidence → Decision → Action</p>
       </article>
       <article class="fieldc">
-        <h4><span class="en">Building Operation, Maintenance &amp; Retrofit Intelligence</span></h4>
+        <h4><span class="en">Building Operation, Maintenance &amp; Retrofit Intelligence</span><span class="ko">건물 운영·유지관리·리트로핏 지능</span><small lang="en" class="ko">Building Operation, Maintenance &amp; Retrofit Intelligence</small></h4>
         <p class="kw">BIM–BMS–IoT · Energy/Carbon · Predictive Maintenance · Scan-to-BIM · Retrofit · Living BIM</p>
         <p class="motto">Transforming static BIM into a continuously evolving Living BIM</p>
       </article>
     </div>
 
-    <div class="sub-h"><h3><span class="en">Core Research Axes</span></h3><p>Automation × Standardization</p></div>
+    <div class="sub-h"><h3><span class="en">Core Research Axes</span><span class="ko">핵심 연구 축</span></h3><p>Automation × Standardization</p></div>
     <div class="axes">
       <article class="axis">
-        <div class="axis-top"><b>A</b><h4><span class="en">Automation &amp; Optimization</span></h4></div>
+        <div class="axis-top"><b>A</b><h4><span class="ko">자동화 / 최적화</span><span class="en">Automation &amp; Optimization</span></h4></div>
         <ul>
-          <li><span class="en">AI agent–based workflow automation</span></li>
-          <li><span class="en">Learning · Prediction · Reasoning · Action</span></li>
-          <li><span class="en">Automation of design, construction, and O&amp;M</span></li>
+          <li><span class="ko">AI 에이전트 기반 업무 자동화 워크플로우</span><span class="en">AI agent–based workflow automation</span></li>
+          <li><span class="ko">학습·예측·추론·실행</span><span class="en">Learning · Prediction · Reasoning · Action</span></li>
+          <li><span class="ko">설계·시공·운영 유지관리 자동화</span><span class="en">Automation of design, construction, and O&amp;M</span></li>
         </ul>
       </article>
       <article class="axis">
-        <div class="axis-top"><b>B</b><h4><span class="en">Standardization</span></h4></div>
+        <div class="axis-top"><b>B</b><h4><span class="ko">표준화</span><span class="en">Standardization</span></h4></div>
         <ul>
-          <li><span class="en">Standards for BIM requirements, data, deliverables, and evaluation</span></li>
-          <li><span class="en">Construction data standards and governance</span></li>
-          <li><span class="en">Knowledge representation</span></li>
+          <li><span class="ko">BIM 요구사항·데이터·성과물·평가 표준</span><span class="en">Standards for BIM requirements, data, deliverables, and evaluation</span></li>
+          <li><span class="ko">건설 데이터 표준 및 거버넌스</span><span class="en">Construction data standards and governance</span></li>
+          <li><span class="ko">지식 표현 (Knowledge Representation)</span><span class="en">Knowledge representation</span></li>
         </ul>
       </article>
       <div class="axis-quote">
-        <p><span class="en">Automation cannot be sustained without standardized data, and standardization must be validated through real automation and industrial demonstration.</span></p>
+        <p><span class="ko">자동화는 표준화된 데이터 없이 지속될 수 없으며, 표준화는 실제 자동화와 산업 실증을 통해 검증되어야 합니다.</span><span class="en">Automation cannot be sustained without standardized data, and standardization must be validated through real automation and industrial demonstration.</span></p>
         <small>A ⇄ B</small>
       </div>
     </div>
@@ -623,45 +631,45 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Funded Research</span>
-      <h2><span class="en">Projects &amp; Awards</span></h2>
+      <h2><span class="ko">연구과제 · 수상</span><span class="en">Projects &amp; Awards</span></h2>
     </div>
-    <div class="sub-h"><h3><span class="en">Research Projects</span></h3><p><span class="en">Ongoing</span></p></div>
+    <div class="sub-h"><h3><span class="en">Research Projects</span><span class="ko">수행과제</span></h3><p><span class="en">Ongoing</span><span class="ko">진행 중</span></p></div>
     <div class="projects">
       <article class="proj">
         <p class="period"><b>2026.08</b>– 2031.07</p>
-        <div><h3><span class="en">An integrated agentic framework for BIM data quality assessment, adjustment, and generation toward BIM-based AX</span></h3><p class="fund"><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
-        <span class="role role-pi"><span class="en">Principal Investigator (PI)</span></span>
+        <div><h3><span class="ko">BIM 기반 AX 구현을 위한 데이터 품질 평가·조정·생성 통합 에이전틱 프레임워크 개발</span><span class="en">An integrated agentic framework for BIM data quality assessment, adjustment, and generation toward BIM-based AX</span></h3><p class="fund"><span class="ko">한국연구재단</span><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
+        <span class="role role-pi"><span class="ko">연구책임자 (PI)</span><span class="en">Principal Investigator (PI)</span></span>
       </article>
       <article class="proj">
         <p class="period"><b>2026.06</b>– 2027.02</p>
-        <div><h3><span class="en">A digital twin–based intelligent ready-mixed concrete logistics management platform for construction sites</span></h3><p class="fund"><span class="en">Honam University (internal grant)</span></p></div>
-        <span class="role role-pi"><span class="en">Principal Investigator (PI)</span></span>
+        <div><h3><span class="ko">디지털트윈 기반 건설현장 지능형 레미콘 물류관리 플랫폼</span><span class="en">A digital twin–based intelligent ready-mixed concrete logistics management platform for construction sites</span></h3><p class="fund"><span class="ko">호남대학교 교내과제</span><span class="en">Honam University (internal grant)</span></p></div>
+        <span class="role role-pi"><span class="ko">연구책임자 (PI)</span><span class="en">Principal Investigator (PI)</span></span>
       </article>
       <article class="proj">
         <p class="period"><b>2026.05</b>– 2029.02</p>
-        <div><h3><span class="en">An AI-BIM framework for multidimensional information exchange in the operation and maintenance of apartment housing</span></h3><p class="fund"><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
-        <span class="role role-co"><span class="en">Participating Researcher</span></span>
+        <div><h3><span class="ko">공동주택 운영 및 유지관리 단계의 다차원 정보 교환을 위한 AI-BIM 프레임워크 개발</span><span class="en">An AI-BIM framework for multidimensional information exchange in the operation and maintenance of apartment housing</span></h3><p class="fund"><span class="ko">한국연구재단</span><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
+        <span class="role role-co"><span class="ko">참여연구원</span><span class="en">Participating Researcher</span></span>
       </article>
       <article class="proj">
         <p class="period"><b>2026.03</b>– 2031.02</p>
-        <div><h3><span class="en">A neuro-symbolic multi-agent framework supporting BIM design consistency evaluation for apartment housing</span></h3><p class="fund"><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
-        <span class="role role-co"><span class="en">Participating Researcher</span></span>
+        <div><h3><span class="ko">신경-기호적 다중 에이전트를 활용한 공동주택 BIM설계 정합성 평가 지원 프레임워크 개발</span><span class="en">A neuro-symbolic multi-agent framework supporting BIM design consistency evaluation for apartment housing</span></h3><p class="fund"><span class="ko">한국연구재단</span><span class="en">National Research Foundation of Korea (NRF)</span></p></div>
+        <span class="role role-co"><span class="ko">참여연구원</span><span class="en">Participating Researcher</span></span>
       </article>
       <article class="proj">
         <p class="period"><b>2025.09</b>– 2027.04</p>
-        <div><h3><span class="en">Establishing and advancing BIM service fee standards for railway projects across the design and construction phases (architecture, traction power, signaling, telecommunications, mechanical, and rolling stock depots)</span></h3><p class="fund"><span class="en">Korea National Railway</span></p></div>
-        <span class="role role-co"><span class="en">Participating Researcher</span></span>
+        <div><h3><span class="ko">철도분야 설계~시공단계 BIM(건축, 전철전력, 신호, 통신, 기계, 차량기지) 대가 기준 수립 및 고도화 용역</span><span class="en">Establishing and advancing BIM service fee standards for railway projects across the design and construction phases (architecture, traction power, signaling, telecommunications, mechanical, and rolling stock depots)</span></h3><p class="fund"><span class="ko">국가철도공단</span><span class="en">Korea National Railway</span></p></div>
+        <span class="role role-co"><span class="ko">참여연구원</span><span class="en">Participating Researcher</span></span>
       </article>
     </div>
 
     <div class="sub-h"><h3>Awards</h3><p>2026 – 2025</p></div>
     <div class="awards">
-      <article class="award up"><span class="yr">2026</span><h4><span class="en">Outstanding Paper Award, MOLIT R&amp;D</span></h4><p><span class="en">To be presented at MOLIT Innovation Day, late 2026</span></p><p class="paper">Optimizing BIM drawing element placement through reinforcement learning<br><span><b>Yije Kim</b>, J. Park, J. Oh, J. Bum, Sangyoon Chin</span></p></article>
-      <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span></span><h4><span class="en">Outstanding Paper Award</span></h4><p><span class="en">Society for Computational Design and Engineering (CDE), 2026 Summer Conference</span></p><p class="paper">Agentic 3D BIM view generation for evaluating design guidelines with visual and spatial reasoning<br><span>Minji Kim, Minki Hong, <b>Yije Kim</b>, Sangyoon Chin</span></p><p class="atags"><span><span class="en">Corresponding</span></span></p></article>
-      <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span></span><h4><span class="en">Best Paper Award</span></h4><p><span class="en">Korean Institute of BIM (KIBIM), 2026 Annual Conference</span></p><p class="paper">Evaluating design guidelines from BIM views using vision-language models<br><span>Minji Kim, Minki Hong, <b>Yije Kim</b>, Sangyoon Chin, Seonga Kim</span></p><p class="atags"><span><span class="en">Corresponding</span></span></p></article>
-      <article class="award"><span class="yr">2025</span><h4><span class="en">Top 20 Outstanding R&amp;D Achievements</span></h4><p><span class="en">Ministry of Land, Infrastructure and Transport (MOLIT)</span></p><p class="paper"><span class="en">Development and industrial application of world-class automation technology for generating BIM design deliverables</span></p></article>
-      <article class="award"><span class="yr">2025</span><h4><span class="en">Memorial Award</span></h4><p><span class="en">Korean Institute of BIM (KIBIM)</span></p><p class="paper"><span class="en">For contributions to research, development, and education in BIM for architecture</span></p></article>
-      <article class="award"><span class="yr">2025</span><h4><span class="en">Teaching Excellence Award</span></h4><p><span class="en">Honam University</span></p></article>
+      <article class="award up"><span class="yr">2026</span><h4><span class="en">Outstanding Paper Award, MOLIT R&amp;D</span><span class="ko">국토교통 R&amp;D 우수논문상</span></h4><p><span class="en">To be presented at MOLIT Innovation Day, late 2026</span><span class="ko">2026년 하반기 국토교통 혁신의 날 시상 예정</span></p><p class="paper">Optimizing BIM drawing element placement through reinforcement learning<br><span><b>Yije Kim</b>, J. Park, J. Oh, J. Bum, Sangyoon Chin</span></p></article>
+      <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span><span class="ko">학생 수상</span></span><h4><span class="en">Outstanding Paper Award</span><span class="ko">우수논문상</span></h4><p><span class="en">Society for Computational Design and Engineering (CDE), 2026 Summer Conference</span><span class="ko">한국CDE학회 2026 하계학술대회</span></p><p class="paper">Agentic 3D BIM view generation for evaluating design guidelines with visual and spatial reasoning<br><span>Minji Kim, Minki Hong, <b>Yije Kim</b>, Sangyoon Chin</span></p><p class="atags"><span><span class="en">Corresponding</span><span class="ko">교신저자</span></span></p></article>
+      <article class="award"><span class="yr">2026</span><span class="stu"><span class="en">Student Award</span><span class="ko">학생 수상</span></span><h4><span class="en">Best Paper Award</span><span class="ko">최우수논문상</span></h4><p><span class="en">Korean Institute of BIM (KIBIM), 2026 Annual Conference</span><span class="ko">한국BIM학회 2026 정기학술대회</span></p><p class="paper">Evaluating design guidelines from BIM views using vision-language models<br><span>Minji Kim, Minki Hong, <b>Yije Kim</b>, Sangyoon Chin, Seonga Kim</span></p><p class="atags"><span><span class="en">Corresponding</span><span class="ko">교신저자</span></span></p></article>
+      <article class="award"><span class="yr">2025</span><h4><span class="en">Top 20 Outstanding R&amp;D Achievements</span><span class="ko">국토교통 R&amp;D 우수성과 20선</span></h4><p><span class="en">Ministry of Land, Infrastructure and Transport (MOLIT)</span><span class="ko">국토교통부</span></p><p class="paper"><span class="en">Development and industrial application of world-class automation technology for generating BIM design deliverables</span><span class="ko">세계최고수준의 BIM 설계 성과물 생성 자동화 기술 개발 및 산업 적용</span></p></article>
+      <article class="award"><span class="yr">2025</span><h4><span class="en">Memorial Award</span><span class="ko">Memorial Award</span></h4><p><span class="en">Korean Institute of BIM (KIBIM)</span><span class="ko">한국BIM학회</span></p><p class="paper"><span class="en">For contributions to research, development, and education in BIM for architecture</span><span class="ko">BIM 건축분야 연구 개발 및 교육 발전에 기여한 공로</span></p></article>
+      <article class="award"><span class="yr">2025</span><h4><span class="en">Teaching Excellence Award</span><span class="ko">Teaching Excellence Award</span></h4><p><span class="en">Honam University</span><span class="ko">호남대학교</span></p></article>
     </div>
   </div>
 </section>
@@ -671,32 +679,31 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Our Team</span>
-      <h2><span class="en">Members</span></h2>
+      <h2><span class="ko">구성원</span><span class="en">Members</span></h2>
     </div>
     <article class="pi">
       <picture class="avatar-photo"><source srcset="images/yije-kim.webp?v=20261101c" type="image/webp"><img src="images/yije-kim.jpg?v=20261101c" width="450" height="450" alt="Dr. Yije Kim (김이제), Honam University"></picture>
       <div class="pi-body">
-        <span class="role-l"><span class="en">Lab Director</span></span>
-        <h3><span class="en">Dr. Yije Kim<small>Assistant Professor</small></span></h3>
-        <p class="aff"><span class="en">Dept. of Architectural Engineering, College of AI Convergence, Honam University</span></p>
-        <p class="aff-ko" lang="ko">김이제 교수 · 호남대학교 건축공학과 · 성균관대학교 박사</p>
-        <p class="pi-bio"><span class="en">Dr. Kim studies the automation, optimization, and standardization of design, construction, and maintenance work based on BIM and AI. He pursues research whose outcomes go beyond papers and technologies to shape real industry workflows, guidelines and standards, and education.</span></p>
+        <span class="role-l"><span class="ko">연구실 책임자</span><span class="en">Lab Director</span></span>
+        <h3><span class="ko">Dr. 김이제<small>Yije Kim</small></span><span class="en">Dr. Yije Kim<small>Assistant Professor</small></span></h3>
+        <p class="aff"><span class="ko">호남대학교 AI융합대학 건축공학과 조교수</span><span class="en">Dept. of Architectural Engineering, College of AI Convergence, Honam University</span></p>
+        <p class="pi-bio"><span class="ko">Dr. 김이제는 BIM과 AI를 기반으로 설계·시공·유지관리 업무의 자동화·최적화 및 표준화를 연구합니다. 연구성과가 논문과 기술에 머무르지 않고 산업의 실제 업무프로세스, 지침과 표준 및 교육으로 확장되는 연구를 지향합니다.</span><span class="en">Dr. Kim studies the automation, optimization, and standardization of design, construction, and maintenance work based on BIM and AI. He pursues research whose outcomes go beyond papers and technologies to shape real industry workflows, guidelines and standards, and education.</span></p>
         <div class="cv">
           <div>
-            <h4><span class="en">Education</span></h4>
+            <h4><span class="ko">학력</span><span class="en">Education</span></h4>
             <dl>
-              <dt>Ph.D.</dt><dd><span class="en">Convergence Engineering for Future City, Sungkyunkwan University</span><small>Smart construction engineering &amp; management</small></dd>
-              <dt>M.S.</dt><dd><span class="en">Convergence Engineering for Future City, Sungkyunkwan University</span><small>Smart construction engineering &amp; management</small></dd>
-              <dt>B.S.</dt><dd><span class="en">Architectural Engineering, Sungkyunkwan University</span></dd>
+              <dt>Ph.D.</dt><dd><span class="ko">성균관대학교 미래도시융합공학과, 공학박사</span><span class="en">Convergence Engineering for Future City, Sungkyunkwan University</span><small>Smart construction engineering &amp; management</small></dd>
+              <dt>M.S.</dt><dd><span class="ko">성균관대학교 미래도시융합공학과, 공학석사</span><span class="en">Convergence Engineering for Future City, Sungkyunkwan University</span><small>Smart construction engineering &amp; management</small></dd>
+              <dt>B.S.</dt><dd><span class="ko">성균관대학교 건축공학과, 공학사</span><span class="en">Architectural Engineering, Sungkyunkwan University</span></dd>
             </dl>
           </div>
           <div>
-            <h4><span class="en">Experience</span></h4>
+            <h4><span class="ko">주요경력</span><span class="en">Experience</span></h4>
             <dl>
-              <dt>2025–</dt><dd><span class="en">Assistant Professor, Dept. of Architectural Engineering, Honam University</span></dd>
-              <dt>2023–25</dt><dd><span class="en">Research Professor, Architectural Engineering, Sungkyunkwan University</span></dd>
-              <dt>2022–25</dt><dd><span class="en">Lecturer, Architectural IT Convergence, Hanyang University ERICA</span></dd>
-              <dt>2024–25</dt><dd><span class="en">Co-CEO, ARCLE Inc. (faculty start-up)</span></dd>
+              <dt>2025–</dt><dd><span class="ko">호남대학교 AI융합대학 건축공학과 조교수</span><span class="en">Assistant Professor, Dept. of Architectural Engineering, Honam University</span></dd>
+              <dt>2023–25</dt><dd><span class="ko">성균관대학교 건축공학과 연구교수</span><span class="en">Research Professor, Architectural Engineering, Sungkyunkwan University</span></dd>
+              <dt>2022–25</dt><dd><span class="ko">한양대학교 ERICA 스마트융합공학부 건축IT융합전공 강사</span><span class="en">Lecturer, Architectural IT Convergence, Hanyang University ERICA</span></dd>
+              <dt>2024–25</dt><dd><span class="ko">주식회사 아클 공동대표 (교원창업)</span><span class="en">Co-CEO, ARCLE Inc. (faculty start-up)</span></dd>
             </dl>
           </div>
         </div>
@@ -708,11 +715,11 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       </div>
     </article>
 
-    <div class="sub-h"><h3><span class="en">Students &amp; Researchers</span></h3><p><span class="en">Positions open</span></p></div>
+    <div class="sub-h"><h3><span class="ko">대학원생 · 연구원</span><span class="en">Students &amp; Researchers</span></h3><p><span class="en">Positions open</span><span class="ko">모집 중</span></p></div>
     <div class="people">
-      <div class="person"><span class="av">+</span><h4><span class="en">Graduate Students</span></h4><p><span class="en">M.S. and Ph.D. programs</span></p><a href="#join"><span class="en">Apply Now →</span></a></div>
-      <div class="person"><span class="av">+</span><h4><span class="en">Undergraduate Researchers</span></h4><p><span class="en">No prior AI experience required</span></p><a href="#join"><span class="en">Apply Now →</span></a></div>
-      <div class="person"><span class="av">+</span><h4><span class="en">Research Interns</span></h4><p><span class="en">Join an ongoing project</span></p><a href="#join"><span class="en">Apply Now →</span></a></div>
+      <div class="person"><span class="av">+</span><h4><span class="ko">대학원생</span><span class="en">Graduate Students</span></h4><p><span class="ko">석사·박사 과정</span><span class="en">M.S. and Ph.D. programs</span></p><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
+      <div class="person"><span class="av">+</span><h4><span class="ko">학부연구생</span><span class="en">Undergraduate Researchers</span></h4><p><span class="ko">AI 경험이 없어도 괜찮습니다</span><span class="en">No prior AI experience required</span></p><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
+      <div class="person"><span class="av">+</span><h4><span class="ko">인턴 연구원</span><span class="en">Research Interns</span></h4><p><span class="ko">연구 프로젝트 참여</span><span class="en">Join an ongoing project</span></p><a href="#join"><span class="ko">지원하기 →</span><span class="en">Apply Now →</span></a></div>
     </div>
   </div>
 </section>
@@ -723,13 +730,13 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
     <div class="head-row">
       <div class="head">
         <span class="eyebrow">Selected Work</span>
-        <h2><span class="en">Publications</span></h2>
+        <h2><span class="ko">주요 논문</span><span class="en">Publications</span></h2>
       </div>
     </div>
     <div class="pubs" id="pubs"></div>
     <div class="more">
       <button class="btn-line" type="button" id="more"></button>
-      <a class="btn-line" href="https://scholar.google.com/citations?hl=en&amp;user=FvymEY8AAAAJ" target="_blank" rel="noopener"><span class="en">View on Google Scholar ↗</span></a>
+      <a class="btn-line" href="https://scholar.google.com/citations?hl=en&amp;user=FvymEY8AAAAJ" target="_blank" rel="noopener"><span class="ko">Google Scholar에서 보기 ↗</span><span class="en">View on Google Scholar ↗</span></a>
     </div>
   </div>
 </section>
@@ -743,11 +750,11 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
     </div>
     <div class="join-top">
       <div class="join-lead">
-        <p><span class="en">CMX Lab is looking for students and researchers who want to solve real problems in the construction industry with data and AI.</span></p>
-        <p><span class="en">No prior AI experience is needed. What matters is an interest in the construction industry, an eye for finding problems, and the will to keep learning and putting ideas into action.</span></p>
+        <p><span class="ko">CMX Lab은 건설산업의 실제 문제를 데이터와 AI로 풀어가고자 하는 학생과 연구자를 기다립니다.</span><span class="en">CMX Lab is looking for students and researchers who want to solve real problems in the construction industry with data and AI.</span></p>
+        <p><span class="ko">AI 경험이 없어도 괜찮습니다. 중요한 것은 건설산업에 대한 관심, 문제를 발견하는 시선, 그리고 꾸준히 배우고 실행하려는 의지입니다.</span><span class="en">No prior AI experience is needed. What matters is an interest in the construction industry, an eye for finding problems, and the will to keep learning and putting ideas into action.</span></p>
       </div>
       <div class="path">
-        <h4><span class="en">Student Growth Path</span></h4>
+        <h4><span class="ko">학생 성장경로</span><span class="en">Student Growth Path</span></h4>
         <ol>
           <li>Course Project</li>
           <li>Undergraduate Researcher</li>
@@ -762,19 +769,19 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       <article class="track">
         <span class="k">For Students</span>
         <h3>Student Opportunities</h3>
-        <p><span class="en">Students interested in graduate study, undergraduate research, or research internships are welcome to send a CV and their research interests.</span></p>
-        <ul><li><span class="en">Graduate study</span></li><li><span class="en">Undergraduate research</span></li><li><span class="en">Research internship</span></li></ul>
+        <p><span class="ko">대학원 진학, 학부연구생, 인턴 연구 참여에 관심 있는 학생은 CV와 관심 연구 분야를 이메일로 보내주시기 바랍니다.</span><span class="en">Students interested in graduate study, undergraduate research, or research internships are welcome to send a CV and their research interests.</span></p>
+        <ul><li><span class="ko">대학원 진학</span><span class="en">Graduate study</span></li><li><span class="ko">학부연구생</span><span class="en">Undergraduate research</span></li><li><span class="ko">인턴 연구</span><span class="en">Research internship</span></li></ul>
       </article>
       <article class="track">
         <span class="k">For Partners</span>
         <h3>Research Collaboration</h3>
-        <p><span class="en">We welcome inquiries about joint research, data and field validation, industry–academia partnerships, and technology transfer. CMX Lab works with universities, public agencies, and companies to define construction problems and develop data-driven solutions.</span></p>
+        <p><span class="ko">공동연구, 데이터·현장실증, 산학협력 및 기술이전에 관한 문의를 환영합니다. CMX Lab은 대학·공공기관·기업과 함께 건설산업의 문제를 정의하고 데이터 기반 해결방안을 개발합니다.</span><span class="en">We welcome inquiries about joint research, data and field validation, industry–academia partnerships, and technology transfer. CMX Lab works with universities, public agencies, and companies to define construction problems and develop data-driven solutions.</span></p>
         <blockquote>Each partner retains its expertise and data ownership, while CMX Lab provides a shared foundation for connecting, validating, and reusing data and knowledge.</blockquote>
       </article>
     </div>
     <div class="apply">
-      <p><span class="en"><strong>Interested in joining CMX Lab?</strong><br>Please send your CV and a brief statement of research interests to <a href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a>. We look forward to hearing from you.</span></p>
-      <a class="btn" href="#contact"><span class="en">Get in Touch</span>
+      <p><span class="ko"><strong>CMX Lab과 함께하고 싶으신가요?</strong><br>CV와 관심 연구 분야를 간단히 정리하여 <a href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a>로 보내주시기 바랍니다. 여러분의 연락을 기다립니다.</span><span class="en"><strong>Interested in joining CMX Lab?</strong><br>Please send your CV and a brief statement of research interests to <a href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a>. We look forward to hearing from you.</span></p>
+      <a class="btn" href="#contact"><span class="ko">연락처 보기</span><span class="en">Get in Touch</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
     </div>
   </div>
@@ -785,16 +792,16 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">Get in Touch</span>
-      <h2><span class="en">Contact</span></h2>
+      <h2><span class="ko">연락처</span><span class="en">Contact</span></h2>
     </div>
     <div class="contact">
       <div class="cinfo">
       <dl>
-        <div><dt>Email</dt><dd><a class="cl" id="mail" href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a><button class="copy" type="button" id="copy-mail" data-copy="yj.kim@honam.ac.kr"><span class="en">Copy</span></button></dd></div>
-        <div><dt><span class="en">Alt. Email</span></dt><dd><a class="cl" href="mailto:yije89@gmail.com">yije89@gmail.com</a></dd></div>
+        <div><dt>Email</dt><dd><a class="cl" id="mail" href="mailto:yj.kim@honam.ac.kr">yj.kim@honam.ac.kr</a><button class="copy" type="button" id="copy-mail" data-copy="yj.kim@honam.ac.kr"><span class="ko">복사</span><span class="en">Copy</span></button></dd></div>
+        <div><dt><span class="ko">보조 이메일</span><span class="en">Alt. Email</span></dt><dd><a class="cl" href="mailto:yije89@gmail.com">yije89@gmail.com</a></dd></div>
         <div><dt>Tel</dt><dd><a class="cl" href="tel:+82629403622">+82-62-940-3622</a></dd></div>
-        <div><dt><span class="en">Department</span></dt><dd><a class="cl" href="https://www.honam.ac.kr" target="_blank" rel="noopener"><span class="en">Dept. of Architectural Engineering, College of AI Convergence</span></a><small>Honam University</small></dd></div>
-        <div><dt><span class="en">Address</span></dt><dd><a class="cl" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EA%B4%91%EC%82%B0%EA%B5%AC+%ED%98%B8%EB%82%A8%EB%8C%80%EA%B8%B8+112" target="_blank" rel="noopener"><span class="en">8801-2, 112, Honamdae-gil, Gwangsan-gu, Gwangju, Republic of Korea 62399</span></a></dd></div>
+        <div><dt><span class="ko">소속</span><span class="en">Department</span></dt><dd><a class="cl" href="https://www.honam.ac.kr" target="_blank" rel="noopener"><span class="ko">호남대학교 AI융합대학 건축공학과</span><span class="en">Dept. of Architectural Engineering, College of AI Convergence</span></a><small>Honam University</small></dd></div>
+        <div><dt><span class="ko">주소</span><span class="en">Address</span></dt><dd><a class="cl" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EA%B4%91%EC%82%B0%EA%B5%AC+%ED%98%B8%EB%82%A8%EB%8C%80%EA%B8%B8+112" target="_blank" rel="noopener"><span class="ko">(62399) 광주광역시 광산구 호남대길 112, 호남대학교 8801-2</span><span class="en">8801-2, 112, Honamdae-gil, Gwangsan-gu, Gwangju, Republic of Korea 62399</span></a></dd></div>
       </dl>
       <div class="clinks">
         <a class="lk" href="mailto:yj.kim@honam.ac.kr"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2.5 4.5L8 9l5.5-4.5"/></svg>Email</a>
@@ -805,7 +812,7 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
       <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C+%EA%B4%91%EC%82%B0%EA%B5%AC+%ED%98%B8%EB%82%A8%EB%8C%80%EA%B8%B8+112" target="_blank" rel="noopener" aria-label="112 Honamdae-gil, Gwangsan-gu, Gwangju on Google Maps">
         <picture><source srcset="images/map-honam.webp" type="image/webp"><img src="images/map-honam.png" width="1200" height="860" alt="Map around 112 Honamdae-gil, Gwangsan-gu, Gwangju" loading="lazy"></picture>
         <span class="pin"><b>CMX Lab · 112 Honamdae-gil</b><i></i></span>
-        <span class="map-open"><span class="en">Open in Google Maps ↗</span></span>
+        <span class="map-open"><span class="ko">Google 지도에서 보기 ↗</span><span class="en">Open in Google Maps ↗</span></span>
         <small class="attr">© OpenStreetMap contributors</small>
       </a>
     </div>
@@ -834,8 +841,10 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   function setLang(l){
     root.setAttribute('data-lang',l);root.lang=l;
     document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
+    try{localStorage.setItem('cmx-lang',l)}catch(e){}
     renderPubs();
   }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
 
   /* ---------- mobile menu ---------- */
   var menu=document.getElementById('menu'),burger=document.getElementById('burger');
@@ -972,7 +981,8 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
     try{navigator.clipboard.writeText(v).then(ok,fb)}catch(e){fb()}
   });
 
-  setLang('en');
+  var saved=null;try{saved=localStorage.getItem('cmx-lang')}catch(e){}
+  setLang(saved==='ko'?'ko':'en');
 })();
 </script>
 
