@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="CMX Lab (Construction Management Transformation) at Honam University: from construction data to knowledge, intelligence, and action.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0ZLMCYNWLM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0ZLMCYNWLM');</script>
 <meta property="og:title" content="CMX Lab · Construction Management Transformation">
 <meta property="og:description" content="From construction data to knowledge, intelligence, and action.">
 <title>CMX Lab</title>
@@ -970,6 +972,31 @@ footer small{font-size:13px;color:var(--fg-3);display:block;margin-top:6px}
   setLang(saved==='ko'?'ko':'en');
 })();
 </script>
+
+<script>
+/* ---------- analytics events (GA4; no-op if gtag is absent) ---------- */
+(function(){
+  function ev(name,params){try{if(typeof window.gtag==='function')window.gtag('event',name,params||{})}catch(e){}}
+  function sec(el){var s=el.closest('section[id],header,footer');return s?(s.id||s.tagName.toLowerCase()):'other'}
+  document.addEventListener('click',function(e){
+    var t=e.target;if(!t||!t.closest)return;
+    var a=t.closest('a,button');if(!a)return;
+    var href=a.getAttribute('href')||'',loc=sec(a);
+    if(a.classList.contains('go')&&a.closest('.pub')){
+      var pub=a.closest('.pub');
+      ev('publication_click',{pub_title:(pub.querySelector('h3')||{}).textContent||'',pub_year:(pub.querySelector('.y')||{}).textContent||'',link_url:href});
+    }else if(a.id==='copy-mail'){ev('email_copy',{section:loc})}
+    else if(href.indexOf('mailto:')===0){ev('email_click',{section:loc,email_type:href.indexOf('honam.ac.kr')>-1?'primary':'alternate'})}
+    else if(href.indexOf('tel:')===0){ev('phone_click',{section:loc})}
+    else if(href.indexOf('google.com/maps')>-1){ev('map_click',{section:loc,map_type:a.classList.contains('map')?'map_image':'address_link'})}
+    else if(href.indexOf('scholar.google')>-1||href.indexOf('orcid.org')>-1){ev('profile_click',{section:loc,platform:href.indexOf('orcid')>-1?'orcid':'google_scholar'})}
+    else if(a.id==='more'){ev('publication_show_more',{label:a.textContent.trim()})}
+    else if(a.closest('.seg')){ev('publication_filter',{filter:a.dataset.f||''})}
+    else if(a.closest('.lang')){ev('language_change',{language:a.dataset.lang||''})}
+  },true);
+})();
+</script>
+
 
 </body>
 </html>
